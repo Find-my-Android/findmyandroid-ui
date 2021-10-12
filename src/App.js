@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles/App.css";
+import "./styles/nav.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import Container from "react-bootstrap/Container";
+import React from "react";
+
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Dashboard from "./pages/Dashboard";
+import Phones from "./pages/Phones";
+import Map from "./pages/Map";
+import Account from "./pages/Account";
+
+const history = createBrowserHistory();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={history}>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <Container>
+              <Home />
+            </Container>
+          </Route>
+          <Route path="/signup">
+            <Container>
+              <Signup />
+            </Container>
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/phones">
+            <Phones />
+          </Route>
+          <Route path="/map">
+            <Map />
+          </Route>
+          <Route path="/account">
+            <Account />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

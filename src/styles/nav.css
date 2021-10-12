@@ -1,0 +1,42 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  height: 100%;
+  width: 250px;
+  background-color: #454d55;
+}
+
+.nav-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logout {
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 5px;
+}
+
+a {
+  padding: 10px;
+  color: inherit !important;
+  text-decoration: none;
+}
+
+.aLink:hover {
+  background-color: darkgray;
+  text-decoration: none;
+}
+
+a > b {
+  font-size: 25px;
+}
+
+.active {
+  background-color: #6c757d;
+  color: #212529;
+}
