@@ -96,7 +96,7 @@ function Signup({ history }) {
         <ReCAPTCHA
           required
           ref={recaptchaRef}
-          sitekey="6LfAgr8aAAAAAJFQAlPNcfnOnjKrTUnogpu8c5w3"
+          sitekey="6LeXDMgcAAAAAPjWUEhJ0ioTXQhwDV9WlRzfJBA3"
         />
         <Button type="submit">Signup</Button>
       </Form>
