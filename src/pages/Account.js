@@ -16,7 +16,6 @@ function Account({ history }) {
   return (
     <>
       <SideBar history={history} active="account" />
-      <h1>Welcome to the Account Page</h1>
     </>
   );
 }
