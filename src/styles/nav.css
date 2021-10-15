@@ -5,13 +5,14 @@
   justify-content: space-between;
   height: 100%;
   width: 250px;
-  background-color: #454d55;
+  background-color: #0b6c96ff;
 }
 
 .nav-content {
   width: 100%;
   display: flex;
   flex-direction: column;
+  color: azure;
 }
 
 .logout {
@@ -28,7 +29,7 @@ a {
 }
 
 .aLink:hover {
-  background-color: darkgray;
+  background-color: #162e38ff;
   text-decoration: none;
 }
 
@@ -37,6 +38,7 @@ a > b {
 }
 
 .active {
-  background-color: #6c757d;
+  background-color: #162e38ff;
   color: #212529;
+  font-weight: bolder;
 }

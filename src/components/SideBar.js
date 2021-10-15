@@ -28,16 +28,16 @@ function SideBar(props) {
             Dashboard
           </Link>
           <Link
-            to="/phones"
-            className={`aLink ${props.active === "budget" ? "active" : ""}`}
-          >
-            Phones
-          </Link>
-          <Link
             to="/map"
-            className={`aLink ${props.active === "expenses" ? "active" : ""}`}
+            className={`aLink ${props.active === "map" ? "active" : ""}`}
           >
             Map
+          </Link>
+          <Link
+            to="/phones"
+            className={`aLink ${props.active === "phones" ? "active" : ""}`}
+          >
+            Phones
           </Link>
           <Link
             to="/account"

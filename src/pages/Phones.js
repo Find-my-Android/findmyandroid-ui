@@ -15,7 +15,7 @@ function Phones({ history }) {
 
   return (
     <>
-      <SideBar history={history} active="map" />
+      <SideBar history={history} active="phones" />
       <h1>Welcome to the Phones Page</h1>
     </>
   );
