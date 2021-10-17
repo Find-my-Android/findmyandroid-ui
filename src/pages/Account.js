@@ -28,11 +28,11 @@ function Account({ history }) {
           </div>
           <p className="change">Change Name</p>
           <div className="a2">
-            Email: jsmith@gmail.com
+            Email: jsmith@gmail.com   {/* {user_email} */}
           </div>
           <p className="change">Change email</p>
           <div className="a2">
-            Password: *************
+            Password: *************   {/* {user_password} */}
           </div>
           <p className="change">Change password</p>
         </div>
