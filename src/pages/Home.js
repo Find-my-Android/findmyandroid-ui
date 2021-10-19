@@ -19,7 +19,10 @@ function Home({ history }) {
   return (
     <div id="homeRoot">
       <Notification></Notification>
-      <h1>Find My Android Login</h1>
+      <h1>
+        F<span class="logoText">ind</span> M<span class="logoText">y</span> A
+        <span class="logoText">ndroid Login</span>
+      </h1>
       <Form onSubmit={onLogin}>
         <Form.Group controlId="loginEmail">
           <Form.Label>Email address</Form.Label>
@@ -44,7 +47,10 @@ function Home({ history }) {
         <Button type="submit">Login</Button>
       </Form>
       <p>
-        Don't have an account?<Link to="/signup">Signup here!</Link>
+        Don't have an account?
+        <Link to="/signup">
+          <span className="logoText">Sign up here!</span>
+        </Link>
       </p>
     </div>
   );

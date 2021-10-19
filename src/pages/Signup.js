@@ -43,7 +43,10 @@ function Signup({ history }) {
   return (
     <div>
       <Notification></Notification>
-      <h1>Find My Android Signup</h1>
+      <h1>
+        F<span class="logoText">ind</span> M<span class="logoText">y</span> A
+        <span class="logoText">ndroid Sign up</span>
+      </h1>
       <Form onSubmit={onSignup}>
         <Form.Group controlId="signupFirstName">
           <Form.Label>First Name</Form.Label>
@@ -101,7 +104,10 @@ function Signup({ history }) {
         <Button type="submit">Signup</Button>
       </Form>
       <p>
-        Have an account?<Link to="/">Login here!</Link>
+        Have an account?
+        <Link to="/">
+          <span className="logoText">Login here!</span>
+        </Link>
       </p>
     </div>
   );

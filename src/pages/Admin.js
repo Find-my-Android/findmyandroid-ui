@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
+import AdminComponent from "../components/AdminComponent";
 
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-function Map({ history }) {
+function Admin({ history }) {
   const authenticated = useSelector((state) => state.authenticated);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     if (!authenticated) {
@@ -15,10 +17,10 @@ function Map({ history }) {
 
   return (
     <>
-      <SideBar history={history} active="map" />
-      <h1>Welcome to the Map Page</h1>
+      <SideBar history={history} active="admin" />
+      <AdminComponent history={history} />
     </>
   );
 }
 
-export default withRouter(Map);
+export default withRouter(Admin);

@@ -22,16 +22,16 @@ function SideBar(props) {
         </h3>
         <div className="d-flex flex-column mt-2">
           <Link
+            to="/admin"
+            className={`aLink ${props.active === "admin" ? "active" : ""}`}
+          >
+            Admin Dashboard
+          </Link>
+          <Link
             to="/dashboard"
             className={`aLink ${props.active === "dashboard" ? "active" : ""}`}
           >
             Dashboard
-          </Link>
-          <Link
-            to="/map"
-            className={`aLink ${props.active === "map" ? "active" : ""}`}
-          >
-            Map
           </Link>
           <Link
             to="/phones"

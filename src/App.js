@@ -10,8 +10,8 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Phones from "./pages/Phones";
-import Map from "./pages/Map";
 import Account from "./pages/Account";
+import Admin from "./pages/Admin";
 
 const history = createBrowserHistory();
 
@@ -30,14 +30,14 @@ function App() {
               <Signup />
             </Container>
           </Route>
+          <Route path="/admin">
+            <Admin />
+          </Route>
           <Route path="/dashboard">
             <Dashboard />
           </Route>
           <Route path="/phones">
             <Phones />
-          </Route>
-          <Route path="/map">
-            <Map />
           </Route>
           <Route path="/account">
             <Account />

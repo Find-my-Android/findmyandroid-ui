@@ -3,7 +3,15 @@
   width: 100vw;
   display: flex;
   flex-direction: row;
-  background-color: #18181a;
+  background-color: #162e38ff;
+}
+
+.mainContainer {
+  margin-left: 50px !important;
+}
+
+.logoText {
+  color: #18aff0ff;
 }
 
 h1,
