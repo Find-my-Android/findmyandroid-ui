@@ -19,7 +19,28 @@
     font-weight: lighter;
 }
 .change {
+    display: flex;
+    margin-bottom: 30px;
     color:rgb(6, 187, 253);
     font-size: 17px;
     font-weight: lighter;
+}
+.inline {
+    display: inline-block;
+}
+
+.textbar {
+    background-color: #162e38ff;
+    border-color: #162e38ff;
+    margin-left: 15px;
+    display: inline-block;
+    width: 250px;
+    height: 32px;
+    color: white;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.form {
+    font-size: 15px;
 }

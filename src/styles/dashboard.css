@@ -10,6 +10,7 @@
 .stolen {
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
     align-items: left;
     justify-content: space-between;
     width: 1330px;
@@ -24,6 +25,7 @@
 .safe {
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
     align-items: left;
     justify-content: space-between;
     width: 1330px;
@@ -36,6 +38,7 @@
 }
 
 .phone {
+    border-radius: 5px;
     width: 1310px;
     height: 200px;
     margin-left: 10px;
