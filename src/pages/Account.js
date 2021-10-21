@@ -12,13 +12,16 @@ function Account({ history }) {
   const authenticated = useSelector((state) => state.authenticated);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const [userName, changeName] = useState("");
+  const [user_firstname, changeFirstName] = useState("");
+  const [user_lastname, changeLastName] = useState("");
+  const [primary_number, changePrimary_number] = useState("");
+  const [secondary_number, changeSecondary_number] = useState("");
   const [email, changeEmail] = useState("");
   const [password, changePassword] = useState("");
 
   const onChange = (event) => {
     event.preventDefault();
-    dispatch(startEditingUser(userName, email, password, history));
+    dispatch(startEditingUser(user_firstname, user_lastname, primary_number, secondary_number, email, password, history));
   };
 
   useEffect(() => {
@@ -35,18 +38,57 @@ function Account({ history }) {
           {user.first_name} {user.last_name}
           <div className="a2">
             <Form onChange={onChange} className="inline">
-              <Form.Group controlId="changeName">
-                <Form.Label className="inline">Name : </Form.Label>
+              <Form.Group controlId="changeFirstName">
+                <Form.Label className="inline">First name : </Form.Label>
                 <Form.Control
                   className="textbar"
                   required
                   type="text"
-                  value="Jonas Kohls" // {userName}
-                  onChange={(e) => changeName(e.target.value)}
+                  value="Jonas" // {user_firstName}
+                  onChange={(e) => changeFirstName(e.target.value)}
                 />
               </Form.Group>
               <onClick type="submit" className="change">
-                Change Name
+                Change First name
+              </onClick>
+              <Form.Group controlId="changeLastName">
+                <Form.Label className="inline">Last name : </Form.Label>
+                <Form.Control
+                  className="textbar"
+                  required
+                  type="text"
+                  value="Kohls" // {user_lastName}
+                  onChange={(e) => changeLastName(e.target.value)}
+                />
+              </Form.Group>
+              <onClick type="submit" className="change">
+                Change Last name
+              </onClick>
+              <Form.Group controlId="changePrimary_number">
+                <Form.Label className="inline">Primary number : </Form.Label>
+                <Form.Control
+                  className="textbar"
+                  required
+                  type="text"
+                  value="715-382-6526" // {primary_number}
+                  onChange={(e) => changePrimary_number(e.target.value)}
+                />
+              </Form.Group>
+              <onClick type="submit" className="change">
+                Change Primary number
+              </onClick>
+              <Form.Group controlId="changeSecondary_number">
+                <Form.Label className="inline">Secondary number : </Form.Label>
+                <Form.Control
+                  className="textbar"
+                  required
+                  type="text"
+                  value="715-874-6448" // {secondary_number}
+                  onChange={(e) => changeSecondary_number(e.target.value)}
+                />
+              </Form.Group>
+              <onClick type="submit" className="change">
+                Change Secondary number
               </onClick>
               <Form.Group controlId="changeEmail">
                 <Form.Label className="inline">Email : </Form.Label>
