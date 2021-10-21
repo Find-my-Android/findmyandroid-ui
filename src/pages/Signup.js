@@ -13,6 +13,8 @@ function Signup({ history }) {
   const recaptchaRef = React.createRef();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phone1, setPhone1] = useState("");
+  const [phone2, setPhone2] = useState("");
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
@@ -64,6 +66,23 @@ function Signup({ history }) {
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group controlId="signupPhone1">
+          <Form.Label>Primary Phone Number</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            value={phone1}
+            onChange={(e) => setPhone1(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group controlId="signupPhone2">
+          <Form.Label>Secondary Phone Number</Form.Label>
+          <Form.Control
+            type="text"
+            value={phone2}
+            onChange={(e) => setPhone2(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="signupEmail">
