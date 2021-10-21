@@ -7,6 +7,7 @@ import { startLoggingInUser } from "../actions";
 import Notification from "../components/Notification";
 
 function Home({ history }) {
+  console.log(history);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +26,7 @@ function Home({ history }) {
       </h1>
       <Form onSubmit={onLogin}>
         <Form.Group controlId="loginEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             required
             type="email"
@@ -35,7 +36,12 @@ function Home({ history }) {
         </Form.Group>
 
         <Form.Group controlId="loginPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>
+            Password
+            <Link to="/forgotpassword">
+              <span className="link">(Forgot Password)</span>
+            </Link>
+          </Form.Label>
           <Form.Control
             required
             type="password"
@@ -49,7 +55,7 @@ function Home({ history }) {
       <p>
         Don't have an account?
         <Link to="/signup">
-          <span className="logoText">Sign up here!</span>
+          <span className="link">Sign up here!</span>
         </Link>
       </p>
     </div>

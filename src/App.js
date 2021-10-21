@@ -12,6 +12,8 @@ import Dashboard from "./pages/Dashboard";
 import Phones from "./pages/Phones";
 import Account from "./pages/Account";
 import Admin from "./pages/Admin";
+import Forgotpassword from "./pages/Forgotpassword";
+import Resetpassword from "./pages/Resetpassword";
 
 const history = createBrowserHistory();
 
@@ -25,9 +27,19 @@ function App() {
               <Home />
             </Container>
           </Route>
+          <Route path="/forgotpassword">
+            <Container>
+              <Forgotpassword />
+            </Container>
+          </Route>
           <Route path="/signup">
             <Container>
               <Signup />
+            </Container>
+          </Route>
+          <Route path="/resetpassword">
+            <Container>
+              <Resetpassword />
             </Container>
           </Route>
           <Route path="/admin">

@@ -216,6 +216,12 @@ export function startAddingUser(
   };
 }
 
+/*********************************** User Send Email ***********************************/
+export function startSendingEmail(email, history) {
+  // finishSendingEmail(email, history);
+  //history.push("/resetpassword");
+}
+
 /********************************** Notifications **********************************/
 
 export function finishAddingUser(user) {

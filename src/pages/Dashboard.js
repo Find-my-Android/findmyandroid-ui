@@ -2,10 +2,8 @@ import "../styles/dashboard.css";
 import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 
-
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
-
 
 function Dashboard({ history }) {
   const authenticated = useSelector((state) => state.authenticated);
