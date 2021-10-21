@@ -6,6 +6,8 @@ import Button from "react-bootstrap/Button";
 import Notification from "../components/Notification";
 import { startSendingEmail } from "../actions";
 
+import "../styles/home.css"
+
 function Forgotpassword({ history }) {
   console.log(history);
   const dispatch = useDispatch();
@@ -18,7 +20,7 @@ function Forgotpassword({ history }) {
   };
 
   return (
-    <div>
+    <div className="home">
       <Notification></Notification>
       <h1>Forgot Password</h1>
       <Form onSubmit={onForgotPassword}>
@@ -26,20 +28,23 @@ function Forgotpassword({ history }) {
           <Form.Label>Enter Your Email Address</Form.Label>
           <Form.Control
             required
+            className="input2"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
-
-        <Button type="submit">Continue</Button>
-      </Form>
-      <p>
+    
+      <div className="su">
+      <p className="inline">
         Remember your password?
         <Link to="/">
           <span className="link">Login here!</span>
         </Link>
       </p>
+      <Button type="submit">Continue</Button>
+      </div>
+      </Form>
     </div>
   );
 }

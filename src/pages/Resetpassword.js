@@ -5,6 +5,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Notification from "../components/Notification";
 
+import "../styles/home.css"
+
 function Resetpassword({ history }) {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
@@ -23,7 +25,7 @@ function Resetpassword({ history }) {
   };
 
   return (
-    <div>
+    <div className="home">
       <Notification></Notification>
       <h1>New Password</h1>
       <Form onSubmit={resetPassword}>
@@ -31,6 +33,7 @@ function Resetpassword({ history }) {
           <Form.Label>Type Your New Password</Form.Label>
           <Form.Control
             required
+            className="input"
             type="password"
             value={password1}
             onChange={(e) => setPassword1(e.target.value)}
@@ -40,6 +43,7 @@ function Resetpassword({ history }) {
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             required
+            className="input"
             type="password"
             value={password2}
             onChange={(e) => {
@@ -48,7 +52,10 @@ function Resetpassword({ history }) {
             }}
           />
         </Form.Group>
-        <Button type="submit">Confirm</Button>
+        <div className="d"></div>
+        <div className="d">
+        <Button type="submit" className="but">Confirm</Button>
+        </div>
       </Form>
     </div>
   );
