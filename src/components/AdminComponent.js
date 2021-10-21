@@ -134,6 +134,7 @@ function AdminComponent(props) {
         phone={phone}
         handleDelete={handleDeletePhoneClick}
         handleEdit={handleEditPhoneClick}
+        history={props.history}
       />
     ));
   };

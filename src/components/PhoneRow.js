@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt, faEdit } from "@fortawesome/free-regular-svg-icons";
+import { faTrashAlt, faEdit, faMap } from "@fortawesome/free-regular-svg-icons";
 
 function PhoneRow(props) {
   const phone = props.phone;
@@ -15,6 +15,10 @@ function PhoneRow(props) {
     props.handleEdit(phone);
   };
 
+  const handleMap = (e) => {
+    props.history.push(`map/${phone.latitude}/${phone.longitude}`);
+  };
+
   return (
     <tr>
       <td>{phone.phone_id}</td>
@@ -25,6 +29,7 @@ function PhoneRow(props) {
       <td>{phone.tracking}</td>
       <td>{phone.status}</td>
       <td>
+        <FontAwesomeIcon icon={faMap} className="icon" onClick={handleMap} />
         <FontAwesomeIcon icon={faEdit} className="icon" onClick={handleEdit} />
         <FontAwesomeIcon
           icon={faTrashAlt}
