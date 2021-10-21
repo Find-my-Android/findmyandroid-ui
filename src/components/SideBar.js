@@ -40,6 +40,12 @@ function SideBar(props) {
             Phones
           </Link>
           <Link
+            to="/map"
+            className={`aLink ${props.active === "map" ? "active" : ""}`}
+          >
+            Map
+          </Link>
+          <Link
             to="/account"
             className={`aLink ${props.active === "account" ? "active" : ""}`}
           >

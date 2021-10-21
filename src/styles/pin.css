@@ -1,0 +1,19 @@
+.pin {
+  position: absolute;
+}
+
+.pin > div > img {
+  position: relative;
+  width: 10vh;
+  left: -44px;
+  bottom: 80px;
+}
+
+.pin > div > span {
+  position: relative;
+  text-align: center;
+  color: #18aff0ff;
+  font-size: large;
+  left: -42px;
+  bottom: 90px;
+}
