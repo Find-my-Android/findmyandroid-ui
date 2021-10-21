@@ -22,13 +22,13 @@ function Dashboard({ history }) {
         <div className="safe">
           <div className="phone">
             <div className="phonename">
-              Personal Phone 1 {/* {user_phonename} */}
+              Main Cell Phone {/* {user_phonename} */}
             </div>
-            <div className="phonenum">715-555-1234 {/* {user_phonenum} */}</div>
+            <div className="phonenum">715-382-6526 {/* {user_phonenum} */}</div>
             <div className="position">
-              Latitude: 39.48573 &nbsp;&nbsp;&nbsp;&nbsp;{" "}
+              Latitude: 44.7956 &nbsp;&nbsp;&nbsp;&nbsp;{" "}
               {/* {phone_latitude} */}
-              Longitude： -84.374753 &nbsp;&nbsp;&nbsp;&nbsp;{" "}
+              Longitude： -91.5039 &nbsp;&nbsp;&nbsp;&nbsp;{" "}
               {/* {phone_lngitude} */}
               Active Tracking {/* {phone_state} */}
             </div>
@@ -37,9 +37,9 @@ function Dashboard({ history }) {
         <div className="safe">
           <div className="phone">
             <div className="phonename">
-              Personal Phone 2 {/* {user_phonename} */}
+              Secondary Cell Phone {/* {user_phonename} */}
             </div>
-            <div className="phonenum">715-555-4323 {/* {user_phonenum} */}</div>
+            <div className="phonenum">715-555-1234 {/* {user_phonenum} */}</div>
             <div className="position">
               Latitude: 34.545 &nbsp;&nbsp;&nbsp;&nbsp; {/* {phone_latitude} */}
               Longitude： 23.32432 &nbsp;&nbsp;&nbsp;&nbsp;{" "}
@@ -51,15 +51,15 @@ function Dashboard({ history }) {
         <div className="stolen">
           <div className="phone">
             <div className="phonename">
-              Personal Phone 3 {/* {user_phonename} */}
+              Wifi Phone Back Home {/* {user_phonename} */}
             </div>
             <div className="phonenum">715-555-5433 {/* {user_phonenum} */}</div>
             <div className="position">
-              Latitude: 120.44723 &nbsp;&nbsp;&nbsp;&nbsp;{" "}
+              Latitude: 20.5937 &nbsp;&nbsp;&nbsp;&nbsp;{" "}
               {/* {phone_latitude} */}
-              Longitude： 99.27543 &nbsp;&nbsp;&nbsp;&nbsp;{" "}
+              Longitude：78.9629 &nbsp;&nbsp;&nbsp;&nbsp;{" "}
               {/* {phone_lngitude} */}
-              Not Tracking {/* {phone_state} */}
+              Stolen! {/* {phone_state} */}
             </div>
           </div>
         </div>

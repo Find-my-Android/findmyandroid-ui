@@ -41,7 +41,7 @@ function Account({ history }) {
                   className="textbar"
                   required
                   type="text"
-                  value="John Smith" // {userName}
+                  value="Jonas Kohls" // {userName}
                   onChange={(e) => changeName(e.target.value)}
                 />
               </Form.Group>
@@ -54,7 +54,7 @@ function Account({ history }) {
                   className="textbar"
                   required
                   type="email"
-                  value="jsmith@gmail.com" // {email}
+                  value="kohlsjw3656@uwec.edu" // {email}
                   onChaneg={(e) => changeEmail(e.target.value)}
                 />
               </Form.Group>

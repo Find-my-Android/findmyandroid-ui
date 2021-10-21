@@ -19,6 +19,7 @@ function SimpleMap(props) {
       >
         <Pin lat={44.7956} lng={-91.5039} name={"Main Cell Phone"} />
         <Pin lat={44.8716} lng={-91.9267} name={"Secondary Cell Phone"} />
+        <Pin lat={20.5937} lng={78.9629} name={"Wifi Phone Back Home"} />
       </GoogleMapReact>
     </div>
   );

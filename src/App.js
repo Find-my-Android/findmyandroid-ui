@@ -9,7 +9,6 @@ import React from "react";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
-import Phones from "./pages/Phones";
 import Map from "./pages/Map";
 import Account from "./pages/Account";
 import Admin from "./pages/Admin";
@@ -48,9 +47,6 @@ function App() {
           </Route>
           <Route path="/dashboard">
             <Dashboard />
-          </Route>
-          <Route path="/phones">
-            <Phones />
           </Route>
           <Route path="/Map">
             <Map />

@@ -20,8 +20,9 @@ function AdminComponent(props) {
       user_id: 1,
       first_name: "Jonas",
       last_name: "Kohls",
-      email: "kohlsjw3656@uwec.edu",
       primary_number: "715-382-6526",
+      secondary_number: "715-874-6448",
+      email: "kohlsjw3656@uwec.edu",
       type: "Admin",
       password: "C00lP@ssWord",
     },
@@ -31,6 +32,7 @@ function AdminComponent(props) {
       last_name: "Deleon",
       email: "deleonmp7478@uwec.edu",
       primary_number: "715-555-1234",
+      secondary_number: "",
       type: "User",
       password: "987654321",
     },
@@ -40,6 +42,7 @@ function AdminComponent(props) {
       last_name: "Xu",
       email: "xun9991@uwec.edu",
       primary_number: "715-555-5555",
+      secondary_number: "",
       type: "Admin",
       password: "123456",
     },
@@ -51,20 +54,30 @@ function AdminComponent(props) {
       user_id: 1,
       name: "Main Cell Phone",
       phone_number: "715-382-6526",
-      secondary_number: "715-874-6448",
-      latitude: "44.7956° N",
-      longitude: "91.5039° W",
-      status: "Stolen",
+      latitude: "44.7956",
+      longitude: "-91.5039",
+      tracking: "Active",
+      status: "",
     },
     {
       phone_id: 2,
       user_id: 1,
       name: "Secondary Cell Phone",
       phone_number: "715-555-1234",
-      secondary_number: "715-874-6448",
-      latitude: "44.8716° N",
-      longitude: "91.9267° W",
-      stable: "Normal",
+      latitude: "44.8716",
+      longitude: "-91.9267",
+      tracking: "None",
+      status: "",
+    },
+    {
+      phone_id: 3,
+      user_id: 1,
+      name: "Wifi Phone Back Home",
+      phone_number: "715-555-5433",
+      latitude: "20.5937",
+      longitude: "78.9629",
+      tracking: "None",
+      status: "Stolen!",
     },
   ];
 
@@ -136,8 +149,9 @@ function AdminComponent(props) {
               <th>Id</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>Email</th>
               <th>Primary Number</th>
+              <th>Secondary Number</th>
+              <th>Email</th>
               <th>Account Type</th>
               <th>Password</th>
               <th>Actions</th>
@@ -154,9 +168,9 @@ function AdminComponent(props) {
               <th>Phone Id</th>
               <th>Phone Name</th>
               <th>Phone Number</th>
-              <th>Secondary Number</th>
               <th>Latitude</th>
               <th>Longitude</th>
+              <th>Tracking</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
