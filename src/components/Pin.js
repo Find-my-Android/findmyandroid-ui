@@ -5,7 +5,7 @@ function Pin(props) {
   return (
     <div className="pin">
       <div>
-        <img alt={props.name} src="../../../icons/pin.png" />
+        <img alt={props.name} src="/images/pin.png" />
         <span>{props.name}</span>
       </div>
     </div>
