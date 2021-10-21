@@ -66,9 +66,7 @@ function DashboardComponent(props) {
   return (
     <div className="container mainContainer">
       <Notification></Notification>
-      <div className="flex justify-content-between align-items-center my-2">
-        {phones ? createPhones() : <></>}
-      </div>
+      {phones ? createPhones() : <></>}
     </div>
   );
 }
