@@ -7,6 +7,13 @@
     transform: translate(-50%, -50%);
 }
 
+.sup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .input {
     width: 376px;
 }
@@ -27,6 +34,11 @@
 .but1 {
     display: inline;
     margin-left: 275px;
+}
+
+.but2{
+    display: inline;
+    margin-left: 80px;
 }
 
 .but {
