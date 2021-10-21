@@ -34,7 +34,7 @@ function SideBar(props) {
             Dashboard
           </Link>
           <Link
-            to="/map"
+            to="/map/44.7956/-91.5039"
             className={`aLink ${props.active === "map" ? "active" : ""}`}
           >
             Map

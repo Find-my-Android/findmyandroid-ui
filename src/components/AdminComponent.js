@@ -24,7 +24,7 @@ function AdminComponent(props) {
       secondary_number: "715-874-6448",
       email: "kohlsjw3656@uwec.edu",
       type: "Admin",
-      password: "C00lP@ssWord",
+      password: "******",
     },
     {
       user_id: 2,
@@ -34,7 +34,7 @@ function AdminComponent(props) {
       primary_number: "715-555-1234",
       secondary_number: "",
       type: "User",
-      password: "987654321",
+      password: "******",
     },
     {
       user_id: 3,
@@ -44,7 +44,7 @@ function AdminComponent(props) {
       primary_number: "715-555-5555",
       secondary_number: "",
       type: "Admin",
-      password: "123456",
+      password: "******",
     },
   ];
 

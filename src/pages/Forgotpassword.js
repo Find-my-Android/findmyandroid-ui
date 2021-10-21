@@ -6,10 +6,9 @@ import Button from "react-bootstrap/Button";
 import Notification from "../components/Notification";
 import { startSendingEmail } from "../actions";
 
-import "../styles/home.css"
+import "../styles/home.css";
 
 function Forgotpassword({ history }) {
-  console.log(history);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
 
@@ -34,16 +33,16 @@ function Forgotpassword({ history }) {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
-    
-      <div className="su">
-      <p className="inline">
-        Remember your password?
-        <Link to="/">
-          <span className="link">Login here!</span>
-        </Link>
-      </p>
-      <Button type="submit">Continue</Button>
-      </div>
+
+        <div className="su">
+          <p className="inline">
+            Remember your password?
+            <Link to="/">
+              <span className="link">Login here!</span>
+            </Link>
+          </p>
+          <Button type="submit">Continue</Button>
+        </div>
       </Form>
     </div>
   );

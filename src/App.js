@@ -48,7 +48,7 @@ function App() {
           <Route path="/dashboard">
             <Dashboard />
           </Route>
-          <Route path="/Map">
+          <Route path="/map/:lat/:lng">
             <Map />
           </Route>
           <Route path="/account">

@@ -6,10 +6,9 @@ import { useDispatch } from "react-redux";
 import { startLoggingInUser } from "../actions";
 import Notification from "../components/Notification";
 
-import "../styles/home.css"
+import "../styles/home.css";
 
 function Home({ history }) {
-  console.log(history);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,17 +53,17 @@ function Home({ history }) {
           />
         </Form.Group>
 
-      <div>
-      <p className="inline">
-        Don't have an account?
-        <Link to="/signup">
-          <span className="link">Sign up here!</span>
-        </Link>
-      </p>
-      <div className="c">
-      <Button type="submit">Login</Button>
-      </div>
-      </div>
+        <div>
+          <p className="inline">
+            Don't have an account?
+            <Link to="/signup">
+              <span className="link">Sign up here!</span>
+            </Link>
+          </p>
+          <div className="c">
+            <Button type="submit">Login</Button>
+          </div>
+        </div>
       </Form>
     </div>
   );
