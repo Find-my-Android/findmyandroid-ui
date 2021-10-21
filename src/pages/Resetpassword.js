@@ -52,8 +52,8 @@ function Resetpassword({ history }) {
             }}
           />
         </Form.Group>
-        <div className="d"></div>
-        <div className="d">
+        <p className="inline"></p>
+        <div className="but1">
         <Button type="submit" className="but">Confirm</Button>
         </div>
       </Form>
