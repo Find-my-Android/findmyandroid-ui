@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Phones from "./pages/Phones";
+import Map from "./pages/Map";
 import Account from "./pages/Account";
 import Admin from "./pages/Admin";
 import Forgotpassword from "./pages/Forgotpassword";
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route path="/phones">
             <Phones />
+          </Route>
+          <Route path="/Map">
+            <Map />
           </Route>
           <Route path="/account">
             <Account />
