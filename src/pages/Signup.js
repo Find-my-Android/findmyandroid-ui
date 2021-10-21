@@ -8,6 +8,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Notification from "../components/Notification";
 
+import "../styles/home.css"
+
 function Signup({ history }) {
   const dispatch = useDispatch();
   const recaptchaRef = React.createRef();
@@ -43,17 +45,18 @@ function Signup({ history }) {
   };
 
   return (
-    <div>
+    <div className="sup">
       <Notification></Notification>
       <h1>
         F<span class="logoText">ind</span> M<span class="logoText">y</span> A
-        <span class="logoText">ndroid Sign up</span>
+        <span class="logoText">ndroid <br/>Sign up</span>
       </h1>
       <Form onSubmit={onSignup}>
         <Form.Group controlId="signupFirstName">
           <Form.Label>First Name</Form.Label>
           <Form.Control
             required
+            className="input"
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -63,6 +66,7 @@ function Signup({ history }) {
           <Form.Label>Last Name</Form.Label>
           <Form.Control
             required
+            className="input"
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -72,6 +76,7 @@ function Signup({ history }) {
           <Form.Label>Primary Phone Number</Form.Label>
           <Form.Control
             required
+            className="input"
             type="text"
             value={phone1}
             onChange={(e) => setPhone1(e.target.value)}
@@ -81,6 +86,7 @@ function Signup({ history }) {
           <Form.Label>Secondary Phone Number</Form.Label>
           <Form.Control
             type="text"
+            className="input"
             value={phone2}
             onChange={(e) => setPhone2(e.target.value)}
           />
@@ -89,6 +95,7 @@ function Signup({ history }) {
           <Form.Label>Email address</Form.Label>
           <Form.Control
             required
+            className="input"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -98,6 +105,7 @@ function Signup({ history }) {
           <Form.Label>Password</Form.Label>
           <Form.Control
             required
+            className="input"
             type="password"
             value={password1}
             onChange={(e) => setPassword1(e.target.value)}
@@ -107,6 +115,7 @@ function Signup({ history }) {
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             required
+            className="input"
             type="password"
             value={password2}
             onChange={(e) => {
@@ -120,14 +129,17 @@ function Signup({ history }) {
           ref={recaptchaRef}
           sitekey="6LeXDMgcAAAAAPjWUEhJ0ioTXQhwDV9WlRzfJBA3"
         />
-        <Button type="submit">Signup</Button>
-      </Form>
-      <p>
+    
+      <p className="inline">
         Have an account?
         <Link to="/">
           <span className="logoText">Login here!</span>
         </Link>
       </p>
+      <div className="but2">
+      <Button type="submit">Signup</Button>
+      </div>
+      </Form>
     </div>
   );
 }
