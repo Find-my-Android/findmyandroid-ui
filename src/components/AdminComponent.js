@@ -66,7 +66,7 @@ function AdminComponent(props) {
       phone_number: "715-555-1234",
       latitude: "44.8716",
       longitude: "-91.9267",
-      tracking: "None",
+      tracking: "Not Tracking",
       status: "",
     },
     {
@@ -76,7 +76,7 @@ function AdminComponent(props) {
       phone_number: "715-555-5433",
       latitude: "20.5937",
       longitude: "78.9629",
-      tracking: "None",
+      tracking: "Not Tracking",
       status: "Stolen!",
     },
   ];
