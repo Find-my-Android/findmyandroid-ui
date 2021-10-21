@@ -54,6 +54,7 @@ function AdminComponent(props) {
       secondary_number: "715-874-6448",
       latitude: "44.7956° N",
       longitude: "91.5039° W",
+      status: "Stolen",
     },
     {
       phone_id: 2,
@@ -63,6 +64,7 @@ function AdminComponent(props) {
       secondary_number: "715-874-6448",
       latitude: "44.8716° N",
       longitude: "91.9267° W",
+      stable: "Normal",
     },
   ];
 
@@ -155,6 +157,7 @@ function AdminComponent(props) {
               <th>Secondary Number</th>
               <th>Latitude</th>
               <th>Longitude</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>

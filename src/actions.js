@@ -83,8 +83,8 @@ export function startLoggingInUser(email, password, history) {
         history.push("/dashboard");
         dispatch(
           finishSettingUser({
-            first_name: "Jonas",
-            last_name: "Kohls",
+            first_name: "Nuo",
+            last_name: "Xu",
             user_id: "1",
           })
         );
