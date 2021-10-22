@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
-import { startGettingAllUsers, startGettingPhones } from "../actions";
+import { startGettingUsers, startGettingPhones } from "../actions";
 
 import Notification from "./Notification";
 import UserRow from "./UserRow";
@@ -39,7 +39,7 @@ function AdminComponent(props) {
   const [editPhoneOpen, setEditPhoneOpen] = useState(false);
 
   useEffect(() => {
-    dispatch(startGettingAllUsers(jwt));
+    dispatch(startGettingUsers(jwt));
     dispatch(startGettingPhones(selectedUser.user_id, jwt));
   }, [dispatch, user.user_id, jwt]);
 
