@@ -20,13 +20,16 @@ function SideBar(props) {
         <h3 className="p-2">
           {user.first_name} {user.last_name}
         </h3>
+
         <div className="d-flex flex-column mt-2">
-          <Link
-            to="/admin"
-            className={`aLink ${props.active === "admin" ? "active" : ""}`}
-          >
-            Admin Dashboard
-          </Link>
+          {user.type === "admin" && (
+            <Link
+              to="/admin"
+              className={`aLink ${props.active === "admin" ? "active" : ""}`}
+            >
+              Admin Dashboard
+            </Link>
+          )}
           <Link
             to="/dashboard"
             className={`aLink ${props.active === "dashboard" ? "active" : ""}`}

@@ -85,6 +85,9 @@ export function startLoggingInUser(email, password, history) {
           finishSettingUser({
             first_name: "Jonas",
             last_name: "Kohls",
+            primary: "715-382-6526",
+            secondary: "715-874-6448",
+            type: "admin",
             user_id: "1",
           })
         );

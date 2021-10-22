@@ -1,44 +1,14 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import Pin from "./Pin";
+import { useSelector } from "react-redux";
 
 function SimpleMap(props) {
+  //const users = useSelector((state) => state.users);
+  const phones = useSelector((state) => state.phones);
   const handleApiLoaded = (map, maps) => {
     // use map and maps objects
   };
-
-  let phones = [
-    {
-      phone_id: 1,
-      user_id: 1,
-      name: "Main Cell Phone",
-      phone_number: "715-382-6526",
-      latitude: 44.7956,
-      longitude: -91.5039,
-      tracking: "active",
-      status: "",
-    },
-    {
-      phone_id: 2,
-      user_id: 1,
-      name: "Secondary Cell Phone",
-      phone_number: "715-555-1234",
-      latitude: 44.8716,
-      longitude: -91.9267,
-      tracking: "not",
-      status: "",
-    },
-    {
-      phone_id: 3,
-      user_id: 1,
-      name: "Wifi Phone Back Home",
-      phone_number: "715-555-5433",
-      latitude: 20.5937,
-      longitude: 78.9629,
-      tracking: "not",
-      status: "stolen",
-    },
-  ];
 
   const createPins = () => {
     return phones.map((phone) => (

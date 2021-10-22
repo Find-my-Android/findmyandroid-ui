@@ -10,83 +10,18 @@ import PhoneRow from "./PhoneRow";
 
 function AdminComponent(props) {
   const dispatch = useDispatch();
-  //const users = useSelector((state) => state.users);
-  //const phones = useSelector((state) => state.phones);
+  const users = useSelector((state) => state.users);
+  const phones = useSelector((state) => state.phones);
   const jwt = useSelector((state) => state.jwt);
   //const user = useSelector((state) => state.user);
-
-  let users = [
-    {
-      user_id: 1,
-      first_name: "Jonas",
-      last_name: "Kohls",
-      primary_number: "715-382-6526",
-      secondary_number: "715-874-6448",
-      email: "kohlsjw3656@uwec.edu",
-      type: "Admin",
-      password: "******",
-    },
-    {
-      user_id: 2,
-      first_name: "Madison",
-      last_name: "Deleon",
-      email: "deleonmp7478@uwec.edu",
-      primary_number: "715-555-1234",
-      secondary_number: "",
-      type: "User",
-      password: "******",
-    },
-    {
-      user_id: 3,
-      first_name: "Nuo",
-      last_name: "Xu",
-      email: "xun9991@uwec.edu",
-      primary_number: "715-555-5555",
-      secondary_number: "",
-      type: "Admin",
-      password: "******",
-    },
-  ];
-
-  let phones = [
-    {
-      phone_id: 1,
-      user_id: 1,
-      name: "Main Cell Phone",
-      phone_number: "715-382-6526",
-      latitude: "44.7956",
-      longitude: "-91.5039",
-      tracking: "Active",
-      status: "",
-    },
-    {
-      phone_id: 2,
-      user_id: 1,
-      name: "Secondary Cell Phone",
-      phone_number: "715-555-1234",
-      latitude: "44.8716",
-      longitude: "-91.9267",
-      tracking: "Not Tracking",
-      status: "",
-    },
-    {
-      phone_id: 3,
-      user_id: 1,
-      name: "Wifi Phone Back Home",
-      phone_number: "715-555-5433",
-      latitude: "20.5937",
-      longitude: "78.9629",
-      tracking: "Not Tracking",
-      status: "Stolen!",
-    },
-  ];
 
   const [selectedUser, setSelectedUser] = useState({
     user_id: -1,
     first_name: "",
     last_name: "",
     email: "",
-    primary_number: "",
+    primary: "",
+    secondary: "",
     type: "",
     password: "",
   });
@@ -95,7 +30,6 @@ function AdminComponent(props) {
     phone_id: -1,
     user_id: -1,
     phone_number: "",
-    secondary_number: "",
     latitude: "",
     longitude: "",
   });

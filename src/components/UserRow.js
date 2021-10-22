@@ -20,8 +20,8 @@ function UserRow(props) {
       <td>{user.user_id}</td>
       <td>{user.first_name}</td>
       <td>{user.last_name}</td>
-      <td>{user.primary_number}</td>
-      <td>{user.secondary_number}</td>
+      <td>{user.primary}</td>
+      <td>{user.secondary}</td>
       <td>{user.email}</td>
       <td>{user.type}</td>
       <td>{user.password}</td>

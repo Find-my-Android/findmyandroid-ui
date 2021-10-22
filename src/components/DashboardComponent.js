@@ -9,39 +9,7 @@ import PhoneComponent from "./PhoneComponent";
 function DashboardComponent(props) {
   const dispatch = useDispatch();
   const jwt = useSelector((state) => state.jwt);
-
-  let phones = [
-    {
-      phone_id: 1,
-      user_id: 1,
-      name: "Main Cell Phone",
-      phone_number: "715-382-6526",
-      latitude: "44.7956",
-      longitude: "-91.5039",
-      tracking: "Active",
-      status: "",
-    },
-    {
-      phone_id: 2,
-      user_id: 1,
-      name: "Secondary Cell Phone",
-      phone_number: "715-555-1234",
-      latitude: "44.8716",
-      longitude: "-91.9267",
-      tracking: "Not",
-      status: "",
-    },
-    {
-      phone_id: 3,
-      user_id: 1,
-      name: "Wifi Phone Back Home",
-      phone_number: "715-555-5433",
-      latitude: "20.5937",
-      longitude: "78.9629",
-      tracking: "Not",
-      status: "Stolen!",
-    },
-  ];
+  const phones = useSelector((state) => state.phones);
 
   const handleEditUserClick = () => {};
 

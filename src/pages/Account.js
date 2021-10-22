@@ -14,14 +14,24 @@ function Account({ history }) {
   const user = useSelector((state) => state.user);
   const [user_firstname, changeFirstName] = useState("");
   const [user_lastname, changeLastName] = useState("");
-  const [primary_number, changePrimary_number] = useState("");
-  const [secondary_number, changeSecondary_number] = useState("");
+  const [primary, changeprimary] = useState("");
+  const [secondary, changesecondary] = useState("");
   const [email, changeEmail] = useState("");
   const [password, changePassword] = useState("");
 
   const onChange = (event) => {
     event.preventDefault();
-    dispatch(startEditingUser(user_firstname, user_lastname, primary_number, secondary_number, email, password, history));
+    dispatch(
+      startEditingUser(
+        user_firstname,
+        user_lastname,
+        primary,
+        secondary,
+        email,
+        password,
+        history
+      )
+    );
   };
 
   useEffect(() => {
@@ -29,6 +39,8 @@ function Account({ history }) {
       history.push("/");
     }
   });
+
+  console.log(user);
 
   return (
     <>
@@ -44,7 +56,7 @@ function Account({ history }) {
                   className="textbar"
                   required
                   type="text"
-                  value="Jonas" // {user_firstName}
+                  value={user.first_name}
                   onChange={(e) => changeFirstName(e.target.value)}
                 />
               </Form.Group>
@@ -57,34 +69,34 @@ function Account({ history }) {
                   className="textbar"
                   required
                   type="text"
-                  value="Kohls" // {user_lastName}
+                  value={user.last_name}
                   onChange={(e) => changeLastName(e.target.value)}
                 />
               </Form.Group>
               <onClick type="submit" className="change">
                 Change Last name
               </onClick>
-              <Form.Group controlId="changePrimary_number">
+              <Form.Group controlId="changeprimary">
                 <Form.Label className="inline">Primary number : </Form.Label>
                 <Form.Control
                   className="textbar"
                   required
                   type="text"
-                  value="715-382-6526" // {primary_number}
-                  onChange={(e) => changePrimary_number(e.target.value)}
+                  value={user.primary}
+                  onChange={(e) => changeprimary(e.target.value)}
                 />
               </Form.Group>
               <onClick type="submit" className="change">
                 Change Primary number
               </onClick>
-              <Form.Group controlId="changeSecondary_number">
+              <Form.Group controlId="changesecondary">
                 <Form.Label className="inline">Secondary number : </Form.Label>
                 <Form.Control
                   className="textbar"
                   required
                   type="text"
-                  value="715-874-6448" // {secondary_number}
-                  onChange={(e) => changeSecondary_number(e.target.value)}
+                  value={user.secondary}
+                  onChange={(e) => changesecondary(e.target.value)}
                 />
               </Form.Group>
               <onClick type="submit" className="change">
@@ -96,7 +108,7 @@ function Account({ history }) {
                   className="textbar"
                   required
                   type="email"
-                  value="kohlsjw3656@uwec.edu" // {email}
+                  value={user.email}
                   onChaneg={(e) => changeEmail(e.target.value)}
                 />
               </Form.Group>
