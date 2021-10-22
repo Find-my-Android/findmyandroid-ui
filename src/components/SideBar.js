@@ -8,6 +8,7 @@ import { startLoggingOutUser } from "../actions";
 function SideBar(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const admin = useSelector((state) => state.admin);
 
   const handleLogout = (event) => {
     event.preventDefault();
@@ -22,7 +23,7 @@ function SideBar(props) {
         </h3>
 
         <div className="d-flex flex-column mt-2">
-          {user.type === "admin" && (
+          {admin && (
             <Link
               to="/admin"
               className={`aLink ${props.active === "admin" ? "active" : ""}`}

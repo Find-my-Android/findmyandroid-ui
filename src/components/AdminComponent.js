@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
+import { startGettingAllUsers, startGettingPhones } from "../actions";
 
 import Notification from "./Notification";
 import UserRow from "./UserRow";
@@ -13,7 +14,7 @@ function AdminComponent(props) {
   const users = useSelector((state) => state.users);
   const phones = useSelector((state) => state.phones);
   const jwt = useSelector((state) => state.jwt);
-  //const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
 
   const [selectedUser, setSelectedUser] = useState({
     user_id: -1,
@@ -37,10 +38,10 @@ function AdminComponent(props) {
   const [editUserOpen, setEditUserOpen] = useState(false);
   const [editPhoneOpen, setEditPhoneOpen] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch(startGettingUsers(jwt));
-  //   dispatch(startGettingPhones(user.user_id, jwt));
-  // }, [dispatch, user.user_id, jwt]);
+  useEffect(() => {
+    dispatch(startGettingAllUsers(jwt));
+    dispatch(startGettingPhones(selectedUser.user_id, jwt));
+  }, [dispatch, user.user_id, jwt]);
 
   const handleEditUserClick = () => {};
 

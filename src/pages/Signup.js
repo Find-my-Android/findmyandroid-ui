@@ -8,15 +8,15 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Notification from "../components/Notification";
 
-import "../styles/home.css"
+import "../styles/home.css";
 
 function Signup({ history }) {
   const dispatch = useDispatch();
   const recaptchaRef = React.createRef();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [phone1, setPhone1] = useState("");
-  const [phone2, setPhone2] = useState("");
+  const [primary, setPrimary] = useState("");
+  const [secondary, setSecondary] = useState("");
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
@@ -40,7 +40,18 @@ function Signup({ history }) {
         })
       );
     } else {
-      dispatch(startAddingUser(firstName, lastName, email, password2, history));
+      dispatch(
+        startAddingUser(
+          firstName,
+          lastName,
+          email,
+          primary,
+          secondary,
+          "user",
+          password2,
+          history
+        )
+      );
     }
   };
 
@@ -49,7 +60,10 @@ function Signup({ history }) {
       <Notification></Notification>
       <h1>
         F<span class="logoText">ind</span> M<span class="logoText">y</span> A
-        <span class="logoText">ndroid <br/>Sign up</span>
+        <span class="logoText">
+          ndroid <br />
+          Sign up
+        </span>
       </h1>
       <Form onSubmit={onSignup}>
         <Form.Group controlId="signupFirstName">
@@ -72,23 +86,23 @@ function Signup({ history }) {
             onChange={(e) => setLastName(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="signupPhone1">
+        <Form.Group controlId="signupPrimary">
           <Form.Label>Primary Phone Number</Form.Label>
           <Form.Control
             required
             className="input"
             type="text"
-            value={phone1}
-            onChange={(e) => setPhone1(e.target.value)}
+            value={primary}
+            onChange={(e) => setPrimary(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="signupPhone2">
+        <Form.Group controlId="signupsecondary">
           <Form.Label>Secondary Phone Number</Form.Label>
           <Form.Control
             type="text"
             className="input"
-            value={phone2}
-            onChange={(e) => setPhone2(e.target.value)}
+            value={secondary}
+            onChange={(e) => setSecondary(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="signupEmail">
@@ -129,16 +143,16 @@ function Signup({ history }) {
           ref={recaptchaRef}
           sitekey="6LeXDMgcAAAAAPjWUEhJ0ioTXQhwDV9WlRzfJBA3"
         />
-    
-      <p className="inline">
-        Have an account?
-        <Link to="/">
-          <span className="logoText">Login here!</span>
-        </Link>
-      </p>
-      <div className="but2">
-      <Button type="submit">Signup</Button>
-      </div>
+
+        <p className="inline">
+          Have an account?
+          <Link to="/">
+            <span className="logoText">Login here!</span>
+          </Link>
+        </p>
+        <div className="but2">
+          <Button type="submit">Signup</Button>
+        </div>
       </Form>
     </div>
   );

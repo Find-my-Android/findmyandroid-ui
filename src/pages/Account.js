@@ -40,8 +40,6 @@ function Account({ history }) {
     }
   });
 
-  console.log(user);
-
   return (
     <>
       <SideBar history={history} active="account" />

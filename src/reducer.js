@@ -6,6 +6,7 @@ const initialState = {
   jwt: "",
   user: {},
   email: "",
+  admin: false,
   notification: {},
   phone: {},
   users: [
@@ -71,6 +72,16 @@ const initialState = {
       tracking: "Not",
       status: "Stolen",
     },
+    {
+      phone_id: 1,
+      user_id: 2,
+      name: "Main phone",
+      phone_number: "715-879-3242",
+      latitude: 39.7684,
+      longitude: -86.1581,
+      tracking: "Active",
+      status: "",
+    },
   ],
 };
 
@@ -87,6 +98,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
+        admin: action.payload.type.toLowerCase() === "admin",
         authenticated: true,
       };
     case Action.FinishEditingUser:
@@ -101,6 +113,7 @@ function reducer(state = initialState, action) {
         authenticated: false,
         jwt: "",
         user: {},
+        admin: false,
         email: action.payload,
         phones: [],
         users: [],
@@ -112,7 +125,7 @@ function reducer(state = initialState, action) {
         email: action.payload,
       };
     /**** Phones ****/
-    case Action.FinishGettingPhones:
+    case Action.FinishLoadingPhones:
       return {
         ...state,
         phones: action.payload,
@@ -121,6 +134,12 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         phone: action.payload,
+      };
+    /**** Admin ****/
+    case Action.FinishLoadingUsers:
+      return {
+        ...state,
+        users: action.payload,
       };
     /**** Notifications ****/
     case Action.AddNotification:

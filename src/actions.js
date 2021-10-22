@@ -9,6 +9,12 @@ export const Action = Object.freeze({
   /* Notifications */
   AddNotification: "AddNotification",
   DismissNotification: "DismissNotification",
+
+  /* Phones */
+  FinishLoadingPhones: "FinishLoadingPhones",
+
+  /* Admin */
+  FinishLoadingUsers: "FinishLoadingUsers",
 });
 
 export const host = "https://fmya.duckdns.org:8445";
@@ -178,10 +184,21 @@ export function startAddingUser(
   first_name,
   last_name,
   email,
+  primary,
+  secondary,
   password,
   history
 ) {
-  const user = { first_name, last_name, email, password };
+  const type = "User";
+  const user = {
+    first_name,
+    last_name,
+    email,
+    primary,
+    secondary,
+    type,
+    password,
+  };
   const options = {
     method: "POST",
     headers: {
@@ -219,7 +236,92 @@ export function startAddingUser(
   };
 }
 
-/*********************************** User Send Email ***********************************/
+/************************************* Phones **************************************/
+/* Get */
+export function startGettingPhones(user_id, jwt) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  };
+  return (dispatch) => {
+    fetch(`${host}/phone/${user_id}/all`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(FinishLoadingPhones(data.phones));
+        }
+      })
+      .catch((e) => console.error(e));
+  };
+}
+
+/************************************** Admin **************************************/
+/* Get Users */
+export function startGettingAllUsers(jwt) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  };
+  return (dispatch) => {
+    fetch(`${host}/admin/user/all`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(FinishLoadingUsers(data.users));
+        }
+      })
+      .catch((e) => console.error(e));
+  };
+}
+
+export function FinishLoadingUsers(users) {
+  return {
+    type: Action.FinishLoadingUsers,
+    payload: users,
+  };
+}
+
+/* Get Phones */
+export function startGettingAllPhones(jwt) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  };
+  return (dispatch) => {
+    fetch(`${host}/admin/phone/all`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(FinishLoadingPhones(data.phones));
+        }
+      })
+      .catch((e) => console.error(e));
+  };
+}
+
+export function FinishLoadingPhones(phones) {
+  return {
+    type: Action.FinishLoadingPhones,
+    payload: phones,
+  };
+}
+
+/********************************* User Send Email *********************************/
 export function startSendingEmail(email, history) {
   // finishSendingEmail(email, history);
   //history.push("/resetpassword");

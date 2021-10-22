@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import Pin from "./Pin";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { startGettingAllPhones, startGettingPhones } from "../actions";
 
 function SimpleMap(props) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const jwt = useSelector((state) => state.jwt);
+  const admin = useSelector((state) => state.admin);
   //const users = useSelector((state) => state.users);
   const phones = useSelector((state) => state.phones);
   const handleApiLoaded = (map, maps) => {
     // use map and maps objects
   };
+
+  useEffect(() => {
+    if (admin) {
+      dispatch(startGettingAllPhones(jwt));
+    } else {
+      dispatch(startGettingPhones(user.user_id, jwt));
+    }
+  });
 
   const createPins = () => {
     return phones.map((phone) => (
