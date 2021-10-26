@@ -60,7 +60,7 @@ function Signup({ history }) {
       <Notification></Notification>
       <h1>
         F<span class="logoText">ind</span> M<span class="logoText">y</span> A
-        <span class="logoText"> ndroid
+        <span class="logoText">ndroid
           Sign up
         </span>
       </h1>
