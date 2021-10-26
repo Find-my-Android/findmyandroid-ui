@@ -38,9 +38,56 @@
 
 .but2{
     display: inline;
-    margin-left: 80px;
+    margin-left: 200px;
 }
 
 .but {
     width: 100px;
+}
+
+.inputsignup {
+    width: 376px;
+    display: inline;
+}
+
+.inputsignup1 {
+    width: 300px;
+    display: inline;
+    margin-left: 30px;
+}
+
+.inputsignup2 {
+    width: 300px;
+    display: inline;
+    margin-left: 10px;
+}
+
+.inputsignup3 {
+    width: 300px;
+    display: inline;
+    margin-left: 120px;
+}
+
+.inputsignup4 {
+    width: 300px;
+    display: inline;
+    margin-left: 118px;
+}
+
+.inputsignup5 {
+    width: 300px;
+    display: inline;
+    margin-left: 99px;
+}
+
+.inputsignup6 {
+    width: 300px;
+    display: inline;
+    margin-left: 130px;
+}
+
+.inputsignup7 {
+    width: 300px;
+    display: inline;
+    margin-left: 70px;
 }

@@ -60,76 +60,75 @@ function Signup({ history }) {
       <Notification></Notification>
       <h1>
         F<span class="logoText">ind</span> M<span class="logoText">y</span> A
-        <span class="logoText">
-          ndroid <br />
+        <span class="logoText"> ndroid
           Sign up
         </span>
       </h1>
       <Form onSubmit={onSignup}>
         <Form.Group controlId="signupFirstName">
-          <Form.Label>First Name</Form.Label>
+          <Form.Label className="inline">First Name</Form.Label>
           <Form.Control
             required
-            className="input"
+            className="inputsignup4"
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="signupLastName">
-          <Form.Label>Last Name</Form.Label>
+          <Form.Label className="inline">Last Name</Form.Label>
           <Form.Control
             required
-            className="input"
+            className="inputsignup3"
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="signupPrimary">
-          <Form.Label>Primary Phone Number</Form.Label>
+          <Form.Label className="inline">Primary Phone Number</Form.Label>
           <Form.Control
             required
-            className="input"
+            className="inputsignup1"
             type="text"
             value={primary}
             onChange={(e) => setPrimary(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="signupsecondary">
-          <Form.Label>Secondary Phone Number</Form.Label>
+          <Form.Label className="inline">Secondary Phone Number</Form.Label>
           <Form.Control
             type="text"
-            className="input"
+            className="inputsignup2"
             value={secondary}
             onChange={(e) => setSecondary(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="signupEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label className="inline">Email address</Form.Label>
           <Form.Control
             required
-            className="input"
+            className="inputsignup5"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="signupPassword1">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className="inline">Password</Form.Label>
           <Form.Control
             required
-            className="input"
+            className="inputsignup6"
             type="password"
             value={password1}
             onChange={(e) => setPassword1(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="signupPassword2">
-          <Form.Label>Confirm Password</Form.Label>
+          <Form.Label className="inline">Confirm Password</Form.Label>
           <Form.Control
             required
-            className="input"
+            className="inputsignup7"
             type="password"
             value={password2}
             onChange={(e) => {
