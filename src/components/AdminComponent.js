@@ -30,9 +30,12 @@ function AdminComponent(props) {
   const [selectedPhone, setSelectedPhone] = useState({
     phone_id: -1,
     user_id: -1,
+    name: "",
     phone_number: "",
-    latitude: "",
-    longitude: "",
+    latitude: -1,
+    longitude: -1,
+    tracking: "",
+    status: "",
   });
 
   const [editUserOpen, setEditUserOpen] = useState(false);
@@ -45,11 +48,20 @@ function AdminComponent(props) {
 
   const handleEditUserClick = () => {};
 
-  const handleDeleteUserClick = () => {};
+  /* Deletes user and phones */
+  const handleDeleteUserClick = (user_id) => {
+    //setUserToDelete(user_id);
+  };
+
+  const handleDeletePhoneClick = (phone_id) => {
+    //  setPhoneToDelete(phone_id);
+  };
+
+  const handleConfirmDeleteUser = (user_id) => {
+    //setDeleteUserOpen(false);
+  };
 
   const handleEditPhoneClick = () => {};
-
-  const handleDeletePhoneClick = () => {};
 
   const createUserRows = () => {
     return users.map((user) => (
