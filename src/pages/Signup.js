@@ -47,7 +47,6 @@ function Signup({ history }) {
           email,
           primary,
           secondary,
-          "user",
           password2,
           history
         )
@@ -60,9 +59,7 @@ function Signup({ history }) {
       <Notification></Notification>
       <h1>
         F<span class="logoText">ind</span> M<span class="logoText">y</span> A
-        <span class="logoText">ndroid
-          Sign up
-        </span>
+        <span class="logoText">ndroid Sign up</span>
       </h1>
       <Form onSubmit={onSignup}>
         <Form.Group controlId="signupFirstName">
@@ -85,6 +82,16 @@ function Signup({ history }) {
             onChange={(e) => setLastName(e.target.value)}
           />
         </Form.Group>
+        <Form.Group controlId="signupEmail">
+          <Form.Label className="inline">Email address</Form.Label>
+          <Form.Control
+            required
+            className="inputsignup5"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
         <Form.Group controlId="signupPrimary">
           <Form.Label className="inline">Primary Phone Number</Form.Label>
           <Form.Control
@@ -95,23 +102,13 @@ function Signup({ history }) {
             onChange={(e) => setPrimary(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="signupsecondary">
+        <Form.Group controlId="signupSecondary">
           <Form.Label className="inline">Secondary Phone Number</Form.Label>
           <Form.Control
             type="text"
             className="inputsignup2"
             value={secondary}
             onChange={(e) => setSecondary(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group controlId="signupEmail">
-          <Form.Label className="inline">Email address</Form.Label>
-          <Form.Control
-            required
-            className="inputsignup5"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
         <Form.Group controlId="signupPassword1">

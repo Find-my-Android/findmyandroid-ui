@@ -24,7 +24,7 @@ function PhoneComponent(props) {
   };
 
   return (
-    <div className={phone.status !== "" ? "stolen" : "safe"}>
+    <div className={phone.stolen_state ? "stolen" : "safe"}>
       <div className="phone">
         <div className="phonename">
           {phone.name}
@@ -35,7 +35,7 @@ function PhoneComponent(props) {
           />
         </div>
         <div className="phonenum">
-          {phone.phone_number}{" "}
+          {phone.phone_num}{" "}
           <FontAwesomeIcon
             icon={faTrashAlt}
             className="icon"
@@ -45,7 +45,8 @@ function PhoneComponent(props) {
         <div className="position">
           Latitude: {phone.latitude} &nbsp;&nbsp;&nbsp;&nbsp; Longitude：
           {phone.longitude}&nbsp;&nbsp;&nbsp;&nbsp;
-          {phone.tracking} Tracking &nbsp;&nbsp;&nbsp;&nbsp;
+          {phone.tracking_state ? "Tracking" : "Not Tracking"}{" "}
+          &nbsp;&nbsp;&nbsp;&nbsp;
           {phone.status}&nbsp;&nbsp;&nbsp;&nbsp;
           <FontAwesomeIcon icon={faMap} className="icon" onClick={handleMap} />
         </div>

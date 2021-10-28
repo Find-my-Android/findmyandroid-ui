@@ -8,11 +8,18 @@ import { startLoggingOutUser } from "../actions";
 function SideBar(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const phones = useSelector((state) => state.phones);
   const admin = useSelector((state) => state.admin);
 
   const handleLogout = (event) => {
     event.preventDefault();
     dispatch(startLoggingOutUser(props.history));
+  };
+
+  const centerMap = () => {
+    return phones[0] !== undefined
+      ? phones[0].latitude + "/" + phones[0].longitude
+      : "40/-100";
   };
 
   return (
@@ -38,7 +45,7 @@ function SideBar(props) {
             Dashboard
           </Link>
           <Link
-            to="/map/44.7956/-91.5039"
+            to={"/map/" + centerMap()}
             className={`aLink ${props.active === "map" ? "active" : ""}`}
           >
             Map

@@ -223,6 +223,13 @@ export function startAddingUser(
   };
 }
 
+export function finishAddingUser(user) {
+  return {
+    type: Action.FinishAddingUser,
+    payload: user,
+  };
+}
+
 /************************************* Phones **************************************/
 /* Get */
 export function startGettingPhones(user_id, jwt) {
@@ -245,41 +252,6 @@ export function startGettingPhones(user_id, jwt) {
       })
       .catch((e) => {
         console.error(e);
-        /* Delete me once backend is done */
-        dispatch(
-          FinishLoadingPhones([
-            {
-              phone_id: 1,
-              user_id: 1,
-              name: "Main Cell Phone",
-              phone_number: "715-382-6526",
-              latitude: 44.7956,
-              longitude: -91.5039,
-              tracking: "Active",
-              status: "",
-            },
-            {
-              phone_id: 2,
-              user_id: 1,
-              name: "Secondary Cell Phone",
-              phone_number: "715-555-1234",
-              latitude: 44.8716,
-              longitude: -91.9267,
-              tracking: "Not",
-              status: "",
-            },
-            {
-              phone_id: 3,
-              user_id: 1,
-              name: "Wifi Phone Back Home",
-              phone_number: "715-555-5433",
-              latitude: 20.5937,
-              longitude: 78.9629,
-              tracking: "Not",
-              status: "Stolen",
-            },
-          ])
-        );
       });
   };
 }
@@ -306,41 +278,6 @@ export function startGettingUsers(jwt) {
       })
       .catch((e) => {
         console.error(e);
-        /* Delete me once backend is done */
-        dispatch(
-          FinishLoadingUsers([
-            {
-              user_id: 1,
-              first_name: "Jonas",
-              last_name: "Kohls",
-              primary: "715-382-6526",
-              secondary: "715-874-6448",
-              email: "kohlsjw3656@uwec.edu",
-              type: "Admin",
-              password: "******",
-            },
-            {
-              user_id: 2,
-              first_name: "Madison",
-              last_name: "Deleon",
-              email: "deleonmp7478@uwec.edu",
-              primary: "715-555-1234",
-              secondary: "",
-              type: "User",
-              password: "******",
-            },
-            {
-              user_id: 3,
-              first_name: "Nuo",
-              last_name: "Xu",
-              email: "xun9991@uwec.edu",
-              primary: "715-555-5555",
-              secondary: "",
-              type: "Admin",
-              password: "******",
-            },
-          ])
-        );
       });
   };
 }
@@ -373,51 +310,6 @@ export function startGettingAllPhones(jwt) {
       })
       .catch((e) => {
         console.error(e);
-        /* Delete me once backend is done */
-        dispatch(
-          FinishLoadingPhones([
-            {
-              phone_id: 1,
-              user_id: 1,
-              name: "Main Cell Phone",
-              phone_number: "715-382-6526",
-              latitude: 44.7956,
-              longitude: -91.5039,
-              tracking: "Active",
-              status: "",
-            },
-            {
-              phone_id: 2,
-              user_id: 1,
-              name: "Secondary Cell Phone",
-              phone_number: "715-555-1234",
-              latitude: 44.8716,
-              longitude: -91.9267,
-              tracking: "Not",
-              status: "",
-            },
-            {
-              phone_id: 3,
-              user_id: 1,
-              name: "Wifi Phone Back Home",
-              phone_number: "715-555-5433",
-              latitude: 20.5937,
-              longitude: 78.9629,
-              tracking: "Not",
-              status: "Stolen",
-            },
-            {
-              phone_id: 1,
-              user_id: 2,
-              name: "Main phone",
-              phone_number: "715-879-3242",
-              latitude: 39.7684,
-              longitude: -86.1581,
-              tracking: "Active",
-              status: "",
-            },
-          ])
-        );
       });
   };
 }
@@ -436,13 +328,6 @@ export function startSendingEmail(email, history) {
 }
 
 /********************************** Notifications **********************************/
-
-export function finishAddingUser(user) {
-  return {
-    type: Action.FinishAddingUser,
-    payload: user,
-  };
-}
 
 export function AddNotification(notification) {
   return {

@@ -21,13 +21,15 @@ function PhoneRow(props) {
 
   return (
     <tr>
-      <td>{phone.phone_id}</td>
+      <td>{phone.imei}</td>
       <td>{phone.name}</td>
-      <td>{phone.phone_number}</td>
+      <td>{phone.phone_num}</td>
       <td>{phone.latitude}</td>
       <td>{phone.longitude}</td>
-      <td>{phone.tracking}</td>
-      <td>{phone.status}</td>
+      <td>{phone.tracking_state ? "Yes" : "No"}</td>
+      <td>{phone.last_tracked}</td>
+      <td>{phone.stolen_state ? "Yes" : "No"}</td>
+      <td>{phone.sim_removed ? "Yes" : "No"}</td>
       <td>
         <FontAwesomeIcon icon={faMap} className="icon" onClick={handleMap} />
         <FontAwesomeIcon icon={faEdit} className="icon" onClick={handleEdit} />

@@ -28,7 +28,7 @@ function DashboardComponent(props) {
   const createPhones = () => {
     return phones.map((phone) => (
       <PhoneComponent
-        key={phone.phone_id}
+        key={phone.imei}
         phone={phone}
         handleDelete={handleDeletePhoneClick}
         handleEdit={handleEditPhoneClick}

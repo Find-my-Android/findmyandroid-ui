@@ -26,7 +26,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
-        admin: action.payload.type.toLowerCase() === "admin",
+        admin: action.payload.account_type === 1,
         authenticated: true,
       };
     case Action.FinishEditingUser:

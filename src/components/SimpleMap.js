@@ -21,17 +21,18 @@ function SimpleMap(props) {
     } else {
       dispatch(startGettingPhones(user.user_id, jwt));
     }
-  });
+  }, [dispatch, user.user_id, jwt]);
 
   const createPins = () => {
     return phones.map((phone) => (
       <Pin
-        key={phone.phone_id}
+        key={phone.imei}
         lat={phone.latitude}
         lng={phone.longitude}
         name={phone.name}
-        tracking={phone.tracking}
-        status={phone.status}
+        tracking_state={phone.tracking_state}
+        stolen_state={phone.stolen_state}
+        sim_removed={phone.sim_removed}
       />
     ));
   };

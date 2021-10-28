@@ -43,7 +43,7 @@ function AdminComponent(props) {
 
   useEffect(() => {
     dispatch(startGettingUsers(jwt));
-    dispatch(startGettingPhones(selectedUser.user_id, jwt));
+    dispatch(startGettingPhones(user.user_id, jwt));
   }, [dispatch, user.user_id, jwt]);
 
   const handleEditUserClick = () => {};
@@ -94,14 +94,13 @@ function AdminComponent(props) {
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
-              <th>Id</th>
+              <th>User Id</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Primary Number</th>
               <th>Secondary Number</th>
               <th>Email</th>
               <th>Account Type</th>
-              <th>Password</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -113,13 +112,15 @@ function AdminComponent(props) {
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
-              <th>Phone Id</th>
+              <th>imei</th>
               <th>Phone Name</th>
               <th>Phone Number</th>
               <th>Latitude</th>
               <th>Longitude</th>
               <th>Tracking</th>
-              <th>Status</th>
+              <th>Last Tracked</th>
+              <th>Stolen Status</th>
+              <th>Sim Card Status</th>
               <th>Actions</th>
             </tr>
           </thead>

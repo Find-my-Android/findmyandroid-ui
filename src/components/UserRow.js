@@ -20,11 +20,10 @@ function UserRow(props) {
       <td>{user.user_id}</td>
       <td>{user.first_name}</td>
       <td>{user.last_name}</td>
-      <td>{user.primary}</td>
-      <td>{user.secondary}</td>
+      <td>{user.primary_num}</td>
+      <td>{user.secondary_num}</td>
       <td>{user.email}</td>
-      <td>{user.type}</td>
-      <td>{user.password}</td>
+      <td>{user.account_type ? "Admin" : "User"}</td>
       <td>
         <FontAwesomeIcon icon={faEdit} className="icon" onClick={handleEdit} />
         <FontAwesomeIcon

@@ -80,7 +80,7 @@ function Account({ history }) {
                   className="textbar"
                   required
                   type="text"
-                  value={user.primary}
+                  value={user.primary_num}
                   onChange={(e) => changeprimary(e.target.value)}
                 />
               </Form.Group>
@@ -93,7 +93,7 @@ function Account({ history }) {
                   className="textbar"
                   required
                   type="text"
-                  value={user.secondary}
+                  value={user.secondary_num}
                   onChange={(e) => changesecondary(e.target.value)}
                 />
               </Form.Group>
