@@ -112,7 +112,7 @@ function AdminComponent(props) {
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
-              <th>imei</th>
+              <th>IMEI</th>
               <th>Phone Name</th>
               <th>Phone Number</th>
               <th>Latitude</th>
