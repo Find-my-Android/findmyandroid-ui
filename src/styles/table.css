@@ -1,0 +1,13 @@
+th,
+td {
+  color: white;
+}
+
+.tableRow:not(.selectedRow):hover {
+  background-color: rgb(30, 64, 78);
+  cursor: pointer;
+}
+
+.selectedRow {
+  background-color: rgb(42, 89, 109);
+}

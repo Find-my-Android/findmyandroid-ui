@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Table from "react-bootstrap/Table";
-import Form from "react-bootstrap/Form";
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "react-bootstrap";
 import { startGettingUsers, startGettingPhones } from "../actions";
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
+import "../styles/table.css";
 
 import Notification from "./Notification";
-import UserRow from "./UserRow";
-import PhoneRow from "./PhoneRow";
 
 function AdminComponent(props) {
   const dispatch = useDispatch();
@@ -15,75 +14,69 @@ function AdminComponent(props) {
   const phones = useSelector((state) => state.phones);
   const jwt = useSelector((state) => state.jwt);
   const user = useSelector((state) => state.user);
-
   const [selectedUser, setSelectedUser] = useState({
     user_id: -1,
     first_name: "",
     last_name: "",
+    primary_num: "",
+    secondary_num: "",
     email: "",
-    primary: "",
-    secondary: "",
-    type: "",
-    password: "",
+    account_type: -1,
   });
 
-  const [selectedPhone, setSelectedPhone] = useState({
-    phone_id: -1,
-    user_id: -1,
-    name: "",
-    phone_number: "",
-    latitude: -1,
-    longitude: -1,
-    tracking: "",
-    status: "",
-  });
+  const userOptions = {
+    sizePerPage: 2,
+    hideSizePerPage: true,
+    hidePageListOnlyOnePage: true,
+  };
 
-  const [editUserOpen, setEditUserOpen] = useState(false);
-  const [editPhoneOpen, setEditPhoneOpen] = useState(false);
+  const phoneOptions = {
+    sizePerPage: 3,
+    hideSizePerPage: true,
+    hidePageListOnlyOnePage: true,
+  };
+
+  const userColumns = [
+    { dataField: "user_id", text: "Id" },
+    { dataField: "first_name", text: "First Name" },
+    { dataField: "last_name", text: "Last Name" },
+    { dataField: "primary_num", text: "Primary Number" },
+    { dataField: "secondary_num", text: "Secondary Number" },
+    { dataField: "email", text: "Email" },
+    { dataField: "account_type", text: "Account Type" },
+  ];
+
+  const userSelect = {
+    mode: "radio",
+    classes: "selectedRow",
+    hideSelectColumn: true,
+    clickToSelect: true,
+    onSelect: (row, isSelect, rowIndex, e) => {
+      setSelectedUser(row);
+    },
+  };
+
+  const phoneColumns = [
+    // { dataField: "imei", text: "IMEI" },
+    { dataField: "name", text: "Name" },
+    { dataField: "phone_num", text: "Number" },
+    { dataField: "latitude", text: "Latitude" },
+    { dataField: "longitude", text: "Longitude" },
+    { dataField: "tracking_state", text: "Tracking" },
+    { dataField: "last_tracked", text: "Last Tracked" },
+    { dataField: "stolen_state", text: "Stolen" },
+    { dataField: "sim_removed", text: "Sim Card Removed" },
+  ];
 
   useEffect(() => {
     dispatch(startGettingUsers(jwt));
-    dispatch(startGettingPhones(user.user_id, jwt));
-  }, [dispatch, user.user_id, jwt]);
+    dispatch(startGettingPhones(selectedUser.user_id, jwt));
+  }, [dispatch, selectedUser.user_id, jwt]);
 
-  const handleEditUserClick = () => {};
-
-  /* Deletes user and phones */
-  const handleDeleteUserClick = (user_id) => {
-    //setUserToDelete(user_id);
-  };
-
-  const handleDeletePhoneClick = (phone_id) => {
-    //  setPhoneToDelete(phone_id);
-  };
-
-  const handleConfirmDeleteUser = (user_id) => {
-    //setDeleteUserOpen(false);
-  };
-
-  const handleEditPhoneClick = () => {};
-
-  const createUserRows = () => {
-    return users.map((user) => (
-      <UserRow
-        key={user.user_id}
-        user={user}
-        handleDelete={handleDeleteUserClick}
-        handleEdit={handleEditUserClick}
-      />
-    ));
-  };
-
-  const createPhoneRows = () => {
-    return phones.map((phone) => (
-      <PhoneRow
-        key={phone.phone_id}
-        phone={phone}
-        handleDelete={handleDeletePhoneClick}
-        handleEdit={handleEditPhoneClick}
-        history={props.history}
-      />
-    ));
+  const getPhoneTableStatus = () => {
+    return selectedUser.user_id === -1
+      ? "Please select a user"
+      : "User does not own any phones";
   };
 
   return (
@@ -91,41 +84,25 @@ function AdminComponent(props) {
       <Notification></Notification>
       <div className="flex justify-content-between align-items-center my-2">
         <h1>Users</h1>
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>User Id</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Primary Number</th>
-              <th>Secondary Number</th>
-              <th>Email</th>
-              <th>Account Type</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>{users ? createUserRows() : <></>}</tbody>
-        </Table>
+        <BootstrapTable
+          keyField="user_id"
+          data={users}
+          columns={userColumns}
+          pagination={paginationFactory(userOptions)}
+          noDataIndication="No users found"
+          selectRow={userSelect}
+          rowClasses="tableRow"
+        />
       </div>
       <div className="flex justify-content-between align-items-center my-2">
-        <h1>User's Phones</h1>
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>IMEI</th>
-              <th>Phone Name</th>
-              <th>Phone Number</th>
-              <th>Latitude</th>
-              <th>Longitude</th>
-              <th>Tracking</th>
-              <th>Last Tracked</th>
-              <th>Stolen Status</th>
-              <th>Sim Card Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>{phones ? createPhoneRows() : <></>}</tbody>
-        </Table>
+        <h1>Phones</h1>
+        <BootstrapTable
+          keyField="imei"
+          data={phones}
+          columns={phoneColumns}
+          pagination={paginationFactory(phoneOptions)}
+          noDataIndication={getPhoneTableStatus()}
+        />
       </div>
     </div>
   );
