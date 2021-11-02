@@ -20,7 +20,7 @@ function Map({ history }) {
   return (
     <>
       <SideBar history={history} active="map" />
-      <SimpleMap center={{ lat: lat, lng: lng }} zoom={11} />
+      <SimpleMap center={{ lat: lat, lng: lng }} zoom={16.5} />
     </>
   );
 }

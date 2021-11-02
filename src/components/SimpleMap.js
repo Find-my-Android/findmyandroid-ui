@@ -39,17 +39,16 @@ function SimpleMap(props) {
 
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: "100vh", width: "100%" }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyAEK-o3vsxmirB3hjD019Zpew9O7X1xoHQ" }}
-        defaultCenter={props.center}
-        defaultZoom={props.zoom}
-        yesIWantToUseGoogleMapApiInternals={true}
-        onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
-      >
-        {phones ? createPins() : <></>}
-      </GoogleMapReact>
-    </div>
+    <GoogleMapReact
+      bootstrapURLKeys={{ key: "AIzaSyAn6jfxtR9I6LfkxtDyeQH_vn6cT52oKU0" }}
+      defaultCenter={props.center}
+      defaultZoom={props.zoom}
+      options={function (maps) {
+        return { mapTypeId: "hybrid" };
+      }}
+    >
+      {phones ? createPins() : <></>}
+    </GoogleMapReact>
   );
 }
 
