@@ -5,6 +5,8 @@ import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
 import "../styles/table.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faEdit, faMap } from "@fortawesome/free-regular-svg-icons";
 
 import Notification from "./Notification";
 
@@ -36,6 +38,8 @@ function AdminComponent(props) {
     hidePageListOnlyOnePage: true,
   };
 
+  const userTypes = ["User", "Admin"];
+
   const userColumns = [
     { dataField: "user_id", text: "Id" },
     { dataField: "first_name", text: "First Name" },
@@ -43,7 +47,11 @@ function AdminComponent(props) {
     { dataField: "primary_num", text: "Primary Number" },
     { dataField: "secondary_num", text: "Secondary Number" },
     { dataField: "email", text: "Email" },
-    { dataField: "account_type", text: "Account Type" },
+    {
+      dataField: "account_type",
+      text: "Account Type",
+      formatter: (cell, row) => (cell === 1 ? "Admin" : "User"),
+    },
   ];
 
   const userSelect = {
@@ -62,16 +70,37 @@ function AdminComponent(props) {
     { dataField: "phone_num", text: "Number" },
     { dataField: "latitude", text: "Latitude" },
     { dataField: "longitude", text: "Longitude" },
-    { dataField: "tracking_state", text: "Tracking" },
+    {
+      dataField: "tracking_state",
+      text: "Tracking",
+      formatter: (cell, row) => (cell === 1 ? "Yes" : "No"),
+    },
     { dataField: "last_tracked", text: "Last Tracked" },
-    { dataField: "stolen_state", text: "Stolen" },
-    { dataField: "sim_removed", text: "Sim Card Removed" },
+    {
+      dataField: "stolen_state",
+      text: "Stolen",
+      formatter: (cell, row) => (cell === 1 ? "Yes" : "No"),
+    },
+    {
+      dataField: "sim_removed",
+      text: "Sim Card Removed",
+      formatter: (cell, row) => (cell === 1 ? "Yes" : "No"),
+    },
+    {
+      dataField: "actions",
+      text: "Actions",
+      formatter: (cell, row) => (
+        <FontAwesomeIcon icon={faMap} className="icon" onClick={handleMap} />
+      ),
+    },
   ];
 
   useEffect(() => {
     dispatch(startGettingUsers(jwt));
     dispatch(startGettingPhones(selectedUser.user_id, jwt));
   }, [dispatch, selectedUser.user_id, jwt]);
+
+  const handleMap = (latitude, longitude) => {};
 
   const getPhoneTableStatus = () => {
     return selectedUser.user_id === -1
