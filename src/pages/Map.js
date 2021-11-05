@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
 import SideBar from "../components/SideBar";
-import { BrowserRouter as Router, Link, useParams } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Link,
+  useParams,
+  withRouter,
+} from "react-router-dom";
 
 import { useSelector } from "react-redux";
-import { withRouter } from "react-router-dom";
 import SimpleMap from "../components/SimpleMap";
 
 function Map({ history }) {
