@@ -75,6 +75,14 @@ function reducer(state = initialState, action) {
         users: state.users.map((user) =>
           user.user_id === action.payload.user_id ? action.payload : user
         ),
+        user:
+          state.user.user_id === action.payload.user_id
+            ? action.payload
+            : state.user,
+        admin:
+          state.user.user_id === action.payload.user_id
+            ? action.payload.account_type === 1
+            : state.admin,
       };
     /**** Notifications ****/
     case Action.AddNotification:
