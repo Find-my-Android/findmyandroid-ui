@@ -69,6 +69,13 @@ function reducer(state = initialState, action) {
         ...state,
         users: action.payload,
       };
+    case Action.FinishEditingUserAdmin:
+      return {
+        ...state,
+        users: state.users.map((user) =>
+          user.user_id === action.payload.user_id ? action.payload : user
+        ),
+      };
     /**** Notifications ****/
     case Action.AddNotification:
       return {

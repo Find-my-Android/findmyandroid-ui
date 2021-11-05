@@ -1,0 +1,12 @@
+.modal-header {
+  background-color: #0b6c96ff;
+}
+
+.modal-title {
+  color: white;
+}
+
+.modal-body {
+  background-color: rgb(30, 64, 78);
+  color: white;
+}

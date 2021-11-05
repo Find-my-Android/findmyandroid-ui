@@ -38,7 +38,7 @@ function DashboardComponent(props) {
   };
 
   return (
-    <div className="container mainContainer">
+    <div className="container">
       <Notification></Notification>
       {phones ? createPhones() : <></>}
     </div>

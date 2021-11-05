@@ -23,7 +23,7 @@ td {
 }
 
 .react-bootstrap-table {
-  height: 80vh;
+  height: 85vh;
   overflow: auto;
 }
 
@@ -32,4 +32,9 @@ th {
   position: sticky;
   top: 0;
   background-color: #0b6c96ff;
+}
+
+.buttonRow {
+  position: relative;
+  bottom: -20px;
 }

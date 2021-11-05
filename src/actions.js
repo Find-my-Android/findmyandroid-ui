@@ -15,6 +15,7 @@ export const Action = Object.freeze({
 
   /* Admin */
   FinishLoadingUsers: "FinishLoadingUsers",
+  FinishEditingUserAdmin: "FinishEditingUserAdmin",
 });
 
 export const host = "https://fmya.duckdns.org:8445";
@@ -102,8 +103,25 @@ export function finishSettingUser(user) {
   };
 }
 
-export function startEditingUser(first_name, last_name, user_id, jwt) {
-  const user = { first_name, last_name };
+export function startEditingUser(
+  user_id,
+  first_name,
+  last_name,
+  email,
+  primary_num,
+  secondary_num,
+  password,
+  jwt
+) {
+  const user = {
+    user_id,
+    first_name,
+    last_name,
+    email,
+    primary_num,
+    secondary_num,
+    password,
+  };
   const options = {
     method: "PATCH",
     headers: {
@@ -134,7 +152,7 @@ export function startEditingUser(first_name, last_name, user_id, jwt) {
         dispatch(
           AddNotification({
             type: "danger",
-            message: "User information failed to be edited, so sorry. :(",
+            message: "User information failed to be edited!",
           })
         );
       });
@@ -318,6 +336,68 @@ export function FinishLoadingPhones(phones) {
   return {
     type: Action.FinishLoadingPhones,
     payload: phones,
+  };
+}
+
+export function startEditingUserAdmin(
+  user_id,
+  first_name,
+  last_name,
+  email,
+  primary_num,
+  secondary_num,
+  account_type,
+  jwt
+) {
+  const user = {
+    user_id,
+    first_name,
+    last_name,
+    email,
+    primary_num,
+    secondary_num,
+    account_type,
+  };
+  const options = {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  };
+
+  return (dispatch) => {
+    fetch(`${host}/admin/user/edit`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(FinishEditingUserAdmin(user));
+          dispatch(
+            AddNotification({
+              type: "success",
+              message: "User information successfully updated!",
+            })
+          );
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          AddNotification({
+            type: "danger",
+            message: "User information failed to be edited!",
+          })
+        );
+      });
+  };
+}
+
+export function FinishEditingUserAdmin(user) {
+  return {
+    type: Action.FinishEditingUserAdmin,
+    payload: user,
   };
 }
 
