@@ -31,6 +31,7 @@ function AdminComponent(props) {
     secondary_num: "",
     email: "",
     account_type: -1,
+    last_used: "",
   });
 
   const phoneOptions = {
@@ -52,6 +53,7 @@ function AdminComponent(props) {
       sort: true,
       formatter: (cell, row) => (cell === 1 ? "Admin" : "User"),
     },
+    { dataField: "last_used", text: "Last Used", sort: true },
   ];
 
   const userSelect = {
@@ -93,7 +95,8 @@ function AdminComponent(props) {
     email,
     primary_num,
     secondary_num,
-    account_type
+    account_type,
+    last_used
   ) => {
     dispatch(
       startEditingUserAdmin(
@@ -104,6 +107,7 @@ function AdminComponent(props) {
         primary_num,
         secondary_num,
         account_type,
+        last_used,
         jwt
       )
     );
@@ -115,6 +119,7 @@ function AdminComponent(props) {
       primary_num: primary_num,
       secondary_num: secondary_num,
       account_type: account_type,
+      last_used: last_used,
     });
     setEditUserOpen(false);
   };

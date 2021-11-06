@@ -194,14 +194,12 @@ export function startAddingUser(
   password,
   history
 ) {
-  const account_type = 0;
   const user = {
     first_name,
     last_name,
     email,
     primary_num,
     secondary_num,
-    account_type,
     password,
   };
   const options = {
@@ -347,6 +345,7 @@ export function startEditingUserAdmin(
   primary_num,
   secondary_num,
   account_type,
+  last_used,
   jwt
 ) {
   const user = {
@@ -373,6 +372,7 @@ export function startEditingUserAdmin(
       .then((response) => response.json())
       .then((data) => {
         if (data.ok) {
+          user.last_used = last_used;
           dispatch(FinishEditingUserAdmin(user));
           dispatch(
             AddNotification({

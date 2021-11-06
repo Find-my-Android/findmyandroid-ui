@@ -37,7 +37,8 @@ function UserModal(props) {
       email,
       primaryNum,
       secondaryNum,
-      accountType
+      accountType,
+      props.user.last_used
     );
   };
 
