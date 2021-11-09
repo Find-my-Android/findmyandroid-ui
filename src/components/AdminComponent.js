@@ -6,13 +6,12 @@ import {
   startEditingUserAdmin,
 } from "../actions";
 import BootstrapTable from "react-bootstrap-table-next";
-import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
-import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import "../styles/table.css";
 import Button from "react-bootstrap/Button";
 import Notification from "./Notification";
 import UserModal from "./UserModal";
 import ErrorModal from "./ErrorModal";
+import PhoneTableModal from "./PhoneTableModal";
 
 function AdminComponent(props) {
   const dispatch = useDispatch();
@@ -23,6 +22,7 @@ function AdminComponent(props) {
   const [errorMessage, setErrorMessage] = useState("");
   const [displayErrorOpen, setDisplayErrorOpen] = useState(false);
   const [editUserOpen, setEditUserOpen] = useState(false);
+  const [displayPhonesOpen, setDisplayPhonesOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState({
     user_id: -1,
     first_name: "",
@@ -33,12 +33,6 @@ function AdminComponent(props) {
     account_type: -1,
     last_used: "",
   });
-
-  const phoneOptions = {
-    sizePerPage: 8,
-    hideSizePerPage: true,
-    hidePageListOnlyOnePage: true,
-  };
 
   const userColumns = [
     { dataField: "user_id", text: "Id", sort: true },
@@ -73,11 +67,24 @@ function AdminComponent(props) {
 
   useEffect(() => {
     dispatch(startGettingUsers(jwt));
-    dispatch(startGettingPhones(selectedUser.user_id, jwt));
-  }, [dispatch, selectedUser.user_id, jwt]);
+  }, [dispatch, jwt]);
 
   const handleDisplayErrorClose = () => {
     setDisplayErrorOpen(false);
+  };
+
+  const handleDisplayPhonesClick = () => {
+    if (selectedUser.user_id !== -1) {
+      dispatch(startGettingPhones(selectedUser.user_id, jwt));
+      setDisplayPhonesOpen(true);
+    } else {
+      setErrorMessage("Please select a user to view phones.");
+      setDisplayErrorOpen(true);
+    }
+  };
+
+  const handleDisplayPhonesClose = () => {
+    setDisplayPhonesOpen(false);
   };
 
   const handleEditUserClick = () => {
@@ -129,98 +136,78 @@ function AdminComponent(props) {
     setEditUserOpen(false);
   };
 
-  const phoneColumns = [
-    // { dataField: "imei", text: "IMEI" },
-    { dataField: "name", text: "Name" },
-    { dataField: "phone_num", text: "Number" },
-    { dataField: "latitude", text: "Latitude" },
-    { dataField: "longitude", text: "Longitude" },
-    {
-      dataField: "tracking_state",
-      text: "Tracking",
-      formatter: (cell, row) => (cell === 1 ? "Yes" : "No"),
-    },
-    { dataField: "last_tracked", text: "Last Tracked" },
-    {
-      dataField: "stolen_state",
-      text: "Stolen",
-      formatter: (cell, row) => (cell === 1 ? "Yes" : "No"),
-    },
-    {
-      dataField: "sim_removed",
-      text: "Sim Card Removed",
-      formatter: (cell, row) => (cell === 1 ? "Yes" : "No"),
-    },
-    {
-      dataField: "actions",
-      text: "Actions",
-      // formatter: (cell, row) => (
-      //    <FontAwesomeIcon icon={faMap} className="icon" onClick={handleMap} />
-      // ),
-    },
-  ];
-
-  const getPhoneTableStatus = () => {
-    return selectedUser.user_id === -1
-      ? "Please select a user"
-      : "User does not own any phones";
-  };
-
   return (
     <div className="a">
-    <div className="container">
-      <Notification></Notification>
-      <div className="flex justify-content-between align-items-center my-2">
-        <h1>Users</h1>
-        <BootstrapTable
-          bootstrap4
-          keyField="user_id"
-          data={users}
-          columns={userColumns}
-          noDataIndication="No users found"
-          selectRow={userSelect}
-          rowClasses="tableRow"
-        />
+      <div className="container">
+        <Notification></Notification>
+        <div className="flex justify-content-between align-items-center my-2">
+          <h1>Users</h1>
+          <BootstrapTable
+            bootstrap4
+            keyField="user_id"
+            data={users}
+            columns={userColumns}
+            noDataIndication="No users found"
+            selectRow={userSelect}
+            rowClasses="tableRow"
+          />
 
-        <ErrorModal
-          open={displayErrorOpen}
-          onClose={handleDisplayErrorClose}
-          onSubmit={handleDisplayErrorClose}
-          title="Warning!"
-          message={errorMessage}
-        />
+          <ErrorModal
+            open={displayErrorOpen}
+            onClose={handleDisplayErrorClose}
+            onSubmit={handleDisplayErrorClose}
+            title="Warning!"
+            message={errorMessage}
+          />
 
-        <UserModal
-          user={selectedUser}
-          open={editUserOpen}
-          onClose={handleEditUserClose}
-          onSubmit={handleEditUser}
-          title="Edit User"
-        />
+          <UserModal
+            user={selectedUser}
+            open={editUserOpen}
+            onClose={handleEditUserClose}
+            onSubmit={handleEditUser}
+            title="Edit User"
+          />
 
-        <div className="buttonRow">
-          <span className="mr-2">
-            <Button type="button" className="btn btn-info">
-              Display Phones
-            </Button>
-          </span>
-          <span className="mr-2">
-            <Button
-              type="button"
-              className="btn btn-warning"
-              onClick={handleEditUserClick}
-            >
-              Edit User
-            </Button>
-          </span>
-          <span>
-            <Button type="button" className="btn btn-danger">
-              Delete User
-            </Button>
-          </span>
+          <PhoneTableModal
+            phones={phones}
+            open={displayPhonesOpen}
+            onClose={handleDisplayPhonesClose}
+            onSubmit={handleDisplayPhonesClose}
+            title={
+              selectedUser.first_name +
+              " " +
+              selectedUser.last_name +
+              "'s Phones"
+            }
+          />
+
+          <div className="buttonRow">
+            <span className="mr-2">
+              <Button
+                type="button"
+                className="btn btn-info"
+                onClick={handleDisplayPhonesClick}
+              >
+                Display Phones
+              </Button>
+            </span>
+            <span className="mr-2">
+              <Button
+                type="button"
+                className="btn btn-warning"
+                onClick={handleEditUserClick}
+              >
+                Edit User
+              </Button>
+            </span>
+            <span>
+              <Button type="button" className="btn btn-danger">
+                Delete User
+              </Button>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }
