@@ -53,7 +53,12 @@ function AdminComponent(props) {
       sort: true,
       formatter: (cell, row) => (cell === 1 ? "Admin" : "User"),
     },
-    { dataField: "last_used", text: "Last Used", sort: true },
+    {
+      dataField: "last_used",
+      text: "Last Used",
+      sort: true,
+      formatter: (cell, row) => new Date(cell).toLocaleString(),
+    },
   ];
 
   const userSelect = {
