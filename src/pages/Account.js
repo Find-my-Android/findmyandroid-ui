@@ -43,7 +43,7 @@ function Account({ history }) {
   return (
     <>
       <SideBar history={history} active="account" />
-      <div className="a">
+      <div className="admin">
         <div className="a1">
           {user.first_name} {user.last_name}
           <div className="a2">
