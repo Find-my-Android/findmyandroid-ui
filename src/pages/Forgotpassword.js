@@ -19,7 +19,7 @@ function Forgotpassword({ history }) {
   };
 
   return (
-    <div className="home">
+    <div className="home1">
       <Notification></Notification>
       <h1>Forgot Password</h1>
       <Form onSubmit={onForgotPassword}>
