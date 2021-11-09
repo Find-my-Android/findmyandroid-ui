@@ -30,7 +30,8 @@ function checkForErrors(response) {
 /*********************************** User Login ***********************************/
 
 export function startLoggingInUser(email, password, history) {
-  const user = { email, password };
+  const source = "Website";
+  const user = { email, password, source };
   const loginOptions = {
     method: "POST",
     headers: {
