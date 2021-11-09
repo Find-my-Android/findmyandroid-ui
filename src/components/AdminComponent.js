@@ -167,6 +167,7 @@ function AdminComponent(props) {
   };
 
   return (
+    <div className="a">
     <div className="container">
       <Notification></Notification>
       <div className="flex justify-content-between align-items-center my-2">
@@ -219,6 +220,7 @@ function AdminComponent(props) {
           </span>
         </div>
       </div>
+    </div>
     </div>
   );
 }

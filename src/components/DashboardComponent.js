@@ -38,9 +38,11 @@ function DashboardComponent(props) {
   };
 
   return (
+    <div className="a">
     <div className="container">
       <Notification></Notification>
       {phones ? createPhones() : <></>}
+    </div>
     </div>
   );
 }
