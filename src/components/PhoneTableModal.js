@@ -10,6 +10,7 @@ function PhoneTableModal(props) {
   const [selectedPhone, setSelectedPhone] = useState({
     imei: "",
     user_id: -1,
+    name: "",
     phone_num: "",
     latitude: -1,
     longitude: -1,
