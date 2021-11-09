@@ -22,8 +22,14 @@ td {
   table-layout: auto !important;
 }
 
+/* If modal table, set a smaller height */
+.modal-body > .react-bootstrap-table {
+  height: 50vh;
+  overflow: auto;
+}
+
 .react-bootstrap-table {
-  height: 85vh;
+  height: 80vh;
   overflow: auto;
 }
 
