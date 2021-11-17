@@ -1,4 +1,4 @@
-.d {
+/*.d {
   display: flex;
   flex-direction: column;
   align-items: right;
@@ -6,7 +6,7 @@
   background-color: #162e38ff;
   width: 85%;
 
-}
+}*/
 .stolen {
   display: flex;
   flex-direction: column;
@@ -38,6 +38,7 @@
 }
 
 .phone {
+  font-size: em;
   border-radius: 5px;
   width: 98%;
   height: 150px;
@@ -45,6 +46,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: #18aff0ff;
+  opacity: 2.0;
 }
 
 .phonename {

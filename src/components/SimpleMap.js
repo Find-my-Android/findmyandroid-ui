@@ -39,7 +39,6 @@ function SimpleMap(props) {
 
   return (
     // Important! Always set the container height explicitly
-    <div className="a">
     <GoogleMapReact
       bootstrapURLKeys={{ key: "AIzaSyAn6jfxtR9I6LfkxtDyeQH_vn6cT52oKU0" }}
       defaultCenter={props.center}
@@ -50,7 +49,6 @@ function SimpleMap(props) {
     >
       {phones ? createPins() : <></>}
     </GoogleMapReact>
-    </div>
   );
 }
 
