@@ -14,8 +14,8 @@ function DashboardComponent(props) {
   const jwt = useSelector((state) => state.jwt);
 
   useEffect(() => {
-    dispatch(startGettingPhones(user.user_id, jwt));
-  }, [dispatch, user.user_id, jwt]);
+    dispatch(startGettingPhones(jwt));
+  }, [dispatch, jwt]);
 
   const handleEditUserClick = () => {};
 
@@ -39,10 +39,10 @@ function DashboardComponent(props) {
 
   return (
     <div className="admin">
-    <div className="container">
-      <Notification></Notification>
-      {phones ? createPhones() : <></>}
-    </div>
+      <div className="container">
+        <Notification></Notification>
+        {phones ? createPhones() : <></>}
+      </div>
     </div>
   );
 }

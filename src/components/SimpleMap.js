@@ -19,9 +19,9 @@ function SimpleMap(props) {
     if (admin) {
       dispatch(startGettingAllPhones(jwt));
     } else {
-      dispatch(startGettingPhones(user.user_id, jwt));
+      dispatch(startGettingPhones(jwt));
     }
-  }, [dispatch, user.user_id, jwt]);
+  }, [dispatch, jwt]);
 
   const createPins = () => {
     return phones.map((phone) => (

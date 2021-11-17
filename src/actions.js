@@ -249,7 +249,7 @@ export function finishAddingUser(user) {
 
 /************************************* Phones **************************************/
 /* Get */
-export function startGettingPhones(user_id, jwt) {
+export function startGettingPhones(jwt) {
   const options = {
     method: "GET",
     headers: {
@@ -259,7 +259,7 @@ export function startGettingPhones(user_id, jwt) {
     credentials: "include",
   };
   return (dispatch) => {
-    fetch(`${host}/phone/${user_id}/all`, options)
+    fetch(`${host}/phone/all`, options)
       .then(checkForErrors)
       .then((response) => response.json())
       .then((data) => {
@@ -306,7 +306,7 @@ export function FinishLoadingUsers(users) {
   };
 }
 
-/* Get Phones */
+/* Get All Phones */
 export function startGettingAllPhones(jwt) {
   const options = {
     method: "GET",
@@ -318,6 +318,31 @@ export function startGettingAllPhones(jwt) {
   };
   return (dispatch) => {
     fetch(`${host}/admin/phone/all`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(FinishLoadingPhones(data.phones));
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
+}
+
+/* Get All Phones For User */
+export function startGettingAllUserPhones(user_id, jwt) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  };
+  return (dispatch) => {
+    fetch(`${host}/admin/phone/all/${user_id}`, options)
       .then(checkForErrors)
       .then((response) => response.json())
       .then((data) => {
