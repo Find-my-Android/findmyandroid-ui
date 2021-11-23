@@ -14,37 +14,38 @@ function Forgotpassword({ history }) {
 
   const onForgotPassword = (event) => {
     event.preventDefault();
-    //dispatch(startSendingEmail(email, history));
-    history.push("/resetpassword");
+    dispatch(startSendingEmail(email, history));
   };
 
   return (
-    <div className="home1">
+    <>
       <Notification></Notification>
-      <h1>Forgot Password</h1>
-      <Form onSubmit={onForgotPassword}>
-        <Form.Group controlId="Enter Email Address">
-          <Form.Label>Enter Your Email Address</Form.Label>
-          <Form.Control
-            required
-            className="input2"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
+      <div className="home1">
+        <h1>Forgot Password</h1>
+        <Form onSubmit={onForgotPassword}>
+          <Form.Group controlId="Enter Email Address">
+            <Form.Label>Enter Your Email Address</Form.Label>
+            <Form.Control
+              required
+              className="input2"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
 
-        <div className="su">
-          <p className="inline">
-            Remember your password?
-            <Link to="/">
-              <span className="link">Login here!</span>
-            </Link>
-          </p>
-          <Button type="submit">Continue</Button>
-        </div>
-      </Form>
-    </div>
+          <div className="su">
+            <p className="inline">
+              Remember your password?
+              <Link to="/">
+                <span className="link">Login here!</span>
+              </Link>
+            </p>
+            <Button type="submit">Continue</Button>
+          </div>
+        </Form>
+      </div>
+    </>
   );
 }
 

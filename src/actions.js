@@ -19,6 +19,7 @@ export const Action = Object.freeze({
 });
 
 export const host = "https://fmya.duckdns.org:8445";
+//export const host = "http://localhost:3446";
 
 function checkForErrors(response) {
   if (!response.ok) {
@@ -427,10 +428,80 @@ export function FinishEditingUserAdmin(user) {
   };
 }
 
-/********************************* User Send Email *********************************/
+/********************************* Forgot Password *********************************/
 export function startSendingEmail(email, history) {
-  // finishSendingEmail(email, history);
-  //history.push("/resetpassword");
+  const user = { email: email };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  };
+
+  return (dispatch) => {
+    fetch(`${host}/user/forgotpassword`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          history.push("/emailconfirmation");
+          dispatch(
+            AddNotification({
+              type: "success",
+              message: "Email sent!",
+            })
+          );
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          AddNotification({
+            type: "danger",
+            message: "Invalid email address",
+          })
+        );
+      });
+  };
+}
+
+export function startResettingPassword(password, jwt, history) {
+  const userPassword = { password: password };
+  const options = {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userPassword),
+  };
+
+  return (dispatch) => {
+    fetch(`${host}/user/resetpassword`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          history.push("/");
+          dispatch(
+            AddNotification({
+              type: "success",
+              message: "User password updated successfully!",
+            })
+          );
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          AddNotification({
+            type: "danger",
+            message: "Failed to update password!",
+          })
+        );
+      });
+  };
 }
 
 /********************************** Notifications **********************************/

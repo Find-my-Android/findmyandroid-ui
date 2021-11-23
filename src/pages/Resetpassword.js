@@ -1,13 +1,21 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Link,
+  useParams,
+  withRouter,
+} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Notification from "../components/Notification";
+import { startResettingPassword } from "../actions";
 
-import "../styles/home.css"
+import "../styles/home.css";
 
 function Resetpassword({ history }) {
+  const dispatch = useDispatch();
+  const jwt = useParams().jwt;
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
 
@@ -21,43 +29,47 @@ function Resetpassword({ history }) {
 
   const resetPassword = (event) => {
     event.preventDefault();
-    history.push("/");
+    dispatch(startResettingPassword(password2, jwt, history));
   };
 
   return (
-    <div className="home">
+    <>
       <Notification></Notification>
-      <h1>New Password</h1>
-      <Form onSubmit={resetPassword}>
-        <Form.Group controlId="NewPassword1">
-          <Form.Label>Type Your New Password</Form.Label>
-          <Form.Control
-            required
-            className="input"
-            type="password"
-            value={password1}
-            onChange={(e) => setPassword1(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group controlId="NewPassword2">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            required
-            className="input"
-            type="password"
-            value={password2}
-            onChange={(e) => {
-              setPassword2(e.target.value);
-              validatePasswords(e);
-            }}
-          />
-        </Form.Group>
-        <p className="inline"></p>
-        <div className="but1">
-        <Button type="submit" className="but">Confirm</Button>
-        </div>
-      </Form>
-    </div>
+      <div className="home">
+        <h1>New Password</h1>
+        <Form onSubmit={resetPassword}>
+          <Form.Group controlId="NewPassword1">
+            <Form.Label>Type Your New Password</Form.Label>
+            <Form.Control
+              required
+              className="input"
+              type="password"
+              value={password1}
+              onChange={(e) => setPassword1(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="NewPassword2">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              required
+              className="input"
+              type="password"
+              value={password2}
+              onChange={(e) => {
+                setPassword2(e.target.value);
+                validatePasswords(e);
+              }}
+            />
+          </Form.Group>
+          <p className="inline"></p>
+          <div className="but1">
+            <Button type="submit" className="but">
+              Confirm
+            </Button>
+          </div>
+        </Form>
+      </div>
+    </>
   );
 }
 

@@ -27,17 +27,17 @@ function App() {
               <Home />
             </Container>
           </Route>
-          <Route path="/forgotpassword">
-            <Container>
-              <Forgotpassword />
-            </Container>
-          </Route>
           <Route path="/signup">
             <Container>
               <Signup />
             </Container>
           </Route>
-          <Route path="/resetpassword">
+          <Route path="/forgotpassword">
+            <Container>
+              <Forgotpassword />
+            </Container>
+          </Route>
+          <Route path="/resetpassword/:jwt">
             <Container>
               <Resetpassword />
             </Container>

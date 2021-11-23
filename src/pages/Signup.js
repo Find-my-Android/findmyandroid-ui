@@ -55,102 +55,104 @@ function Signup({ history }) {
   };
 
   return (
-    <div className="sup">
+    <>
       <Notification></Notification>
-      <h1>
-        F<span class="logoText">ind</span> M<span class="logoText">y</span> A
-        <span class="logoText">ndroid Sign up</span>
-      </h1>
-      <Form onSubmit={onSignup}>
-        <Form.Group controlId="signupFirstName">
-          <Form.Label className="inline">First Name</Form.Label>
-          <Form.Control
+      <div className="sup">
+        <h1>
+          F<span class="logoText">ind</span> M<span class="logoText">y</span> A
+          <span class="logoText">ndroid Sign up</span>
+        </h1>
+        <Form onSubmit={onSignup}>
+          <Form.Group controlId="signupFirstName">
+            <Form.Label className="inline">First Name</Form.Label>
+            <Form.Control
+              required
+              className="inputsignup4"
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="signupLastName">
+            <Form.Label className="inline">Last Name</Form.Label>
+            <Form.Control
+              required
+              className="inputsignup3"
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="signupEmail">
+            <Form.Label className="inline">Email address</Form.Label>
+            <Form.Control
+              required
+              className="inputsignup5"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="signupPrimary">
+            <Form.Label className="inline">Primary Phone Number</Form.Label>
+            <Form.Control
+              required
+              className="inputsignup1"
+              type="text"
+              value={primary}
+              onChange={(e) => setPrimary(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="signupSecondary">
+            <Form.Label className="inline">Secondary Phone Number</Form.Label>
+            <Form.Control
+              type="text"
+              className="inputsignup2"
+              value={secondary}
+              onChange={(e) => setSecondary(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="signupPassword1">
+            <Form.Label className="inline">Password</Form.Label>
+            <Form.Control
+              required
+              className="inputsignup6"
+              type="password"
+              value={password1}
+              onChange={(e) => setPassword1(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="signupPassword2">
+            <Form.Label className="inline">Confirm Password</Form.Label>
+            <Form.Control
+              required
+              className="inputsignup7"
+              type="password"
+              value={password2}
+              onChange={(e) => {
+                setPassword2(e.target.value);
+                validatePasswords(e);
+              }}
+            />
+          </Form.Group>
+          <ReCAPTCHA
             required
-            className="inputsignup4"
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            ref={recaptchaRef}
+            sitekey="6LeXDMgcAAAAAPjWUEhJ0ioTXQhwDV9WlRzfJBA3"
           />
-        </Form.Group>
-        <Form.Group controlId="signupLastName">
-          <Form.Label className="inline">Last Name</Form.Label>
-          <Form.Control
-            required
-            className="inputsignup3"
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group controlId="signupEmail">
-          <Form.Label className="inline">Email address</Form.Label>
-          <Form.Control
-            required
-            className="inputsignup5"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group controlId="signupPrimary">
-          <Form.Label className="inline">Primary Phone Number</Form.Label>
-          <Form.Control
-            required
-            className="inputsignup1"
-            type="text"
-            value={primary}
-            onChange={(e) => setPrimary(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group controlId="signupSecondary">
-          <Form.Label className="inline">Secondary Phone Number</Form.Label>
-          <Form.Control
-            type="text"
-            className="inputsignup2"
-            value={secondary}
-            onChange={(e) => setSecondary(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group controlId="signupPassword1">
-          <Form.Label className="inline">Password</Form.Label>
-          <Form.Control
-            required
-            className="inputsignup6"
-            type="password"
-            value={password1}
-            onChange={(e) => setPassword1(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group controlId="signupPassword2">
-          <Form.Label className="inline">Confirm Password</Form.Label>
-          <Form.Control
-            required
-            className="inputsignup7"
-            type="password"
-            value={password2}
-            onChange={(e) => {
-              setPassword2(e.target.value);
-              validatePasswords(e);
-            }}
-          />
-        </Form.Group>
-        <ReCAPTCHA
-          required
-          ref={recaptchaRef}
-          sitekey="6LeXDMgcAAAAAPjWUEhJ0ioTXQhwDV9WlRzfJBA3"
-        />
 
-        <p className="inline">
-          Have an account?
-          <Link to="/">
-            <span className="logoText">Login here!</span>
-          </Link>
-        </p>
-        <div className="but2">
-          <Button type="submit">Signup</Button>
-        </div>
-      </Form>
-    </div>
+          <p className="inline">
+            Have an account?
+            <Link to="/">
+              <span className="logoText">Login here!</span>
+            </Link>
+          </p>
+          <div className="but2">
+            <Button type="submit">Signup</Button>
+          </div>
+        </Form>
+      </div>
+    </>
   );
 }
 

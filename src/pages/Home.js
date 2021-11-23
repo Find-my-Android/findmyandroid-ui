@@ -19,53 +19,55 @@ function Home({ history }) {
   };
 
   return (
-    <div className="home">
+    <>
       <Notification></Notification>
-      <h1>
-        F<span class="logoText">ind</span> M<span class="logoText">y</span> A
-        <span class="logoText">ndroid Login</span>
-      </h1>
-      <Form onSubmit={onLogin}>
-        <Form.Group controlId="loginEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            required
-            className="input"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
+      <div className="home">
+        <h1>
+          F<span class="logoText">ind</span> M<span class="logoText">y</span> A
+          <span class="logoText">ndroid Login</span>
+        </h1>
+        <Form onSubmit={onLogin}>
+          <Form.Group controlId="loginEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              required
+              className="input"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
 
-        <Form.Group controlId="loginPassword">
-          <Form.Label>
-            Password
-            <Link to="/forgotpassword">
-              <span className="link">(Forgot Password)</span>
-            </Link>
-          </Form.Label>
-          <Form.Control
-            required
-            className="input"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
+          <Form.Group controlId="loginPassword">
+            <Form.Label>
+              Password
+              <Link to="/forgotpassword">
+                <span className="link">(Forgot Password)</span>
+              </Link>
+            </Form.Label>
+            <Form.Control
+              required
+              className="input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
 
-        <div>
-          <p className="inline">
-            Don't have an account?
-            <Link to="/signup">
-              <span className="link">Sign up here!</span>
-            </Link>
-          </p>
-          <div className="c">
-            <Button type="submit">Login</Button>
+          <div>
+            <p className="inline">
+              Don't have an account?
+              <Link to="/signup">
+                <span className="link">Sign up here!</span>
+              </Link>
+            </p>
+            <div className="c">
+              <Button type="submit">Login</Button>
+            </div>
           </div>
-        </div>
-      </Form>
-    </div>
+        </Form>
+      </div>
+    </>
   );
 }
 
