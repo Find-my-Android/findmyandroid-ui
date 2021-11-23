@@ -14,6 +14,7 @@ import Account from "./pages/Account";
 import Admin from "./pages/Admin";
 import Forgotpassword from "./pages/Forgotpassword";
 import Resetpassword from "./pages/Resetpassword";
+import EmailConfirmation from "./pages/EmailConfirmation";
 
 const history = createBrowserHistory();
 
@@ -35,6 +36,11 @@ function App() {
           <Route path="/forgotpassword">
             <Container>
               <Forgotpassword />
+            </Container>
+          </Route>
+          <Route path="/emailconfirmation">
+            <Container>
+              <EmailConfirmation />
             </Container>
           </Route>
           <Route path="/resetpassword/:jwt">
