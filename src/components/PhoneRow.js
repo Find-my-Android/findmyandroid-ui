@@ -21,7 +21,7 @@ function PhoneRow(props) {
 
   return (
     <tr>
-      <td>{phone.imei}</td>
+      <td>{phone.software_id}</td>
       <td>{phone.name}</td>
       <td>{phone.phone_num}</td>
       <td>{phone.latitude}</td>

@@ -8,7 +8,7 @@ import BootstrapTable from "react-bootstrap-table-next";
 function PhoneTableModal(props) {
   const [open, setOpen] = useState(props.open);
   const [selectedPhone, setSelectedPhone] = useState({
-    imei: "",
+    software_id: "",
     user_id: -1,
     name: "",
     phone_num: "",
@@ -21,7 +21,7 @@ function PhoneTableModal(props) {
   });
 
   const phoneColumns = [
-    // { dataField: "imei", text: "IMEI" },
+    // { dataField: "software_id", text: "software_id" },
     { dataField: "name", text: "Name", sort: true },
     { dataField: "phone_num", text: "Number" },
     { dataField: "latitude", text: "Latitude" },
@@ -87,7 +87,7 @@ function PhoneTableModal(props) {
       <Modal.Body>
         <BootstrapTable
           bootstrap4
-          keyField="imei"
+          keyField="software_id"
           data={props.phones}
           columns={phoneColumns}
           noDataIndication="No phones found"

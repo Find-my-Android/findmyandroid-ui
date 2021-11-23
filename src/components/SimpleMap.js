@@ -26,7 +26,7 @@ function SimpleMap(props) {
   const createPins = () => {
     return phones.map((phone) => (
       <Pin
-        key={phone.imei}
+        key={phone.software_id}
         lat={phone.latitude}
         lng={phone.longitude}
         name={phone.name}
