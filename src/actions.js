@@ -106,7 +106,6 @@ export function finishSettingUser(user) {
 }
 
 export function startEditingUser(
-  user_id,
   first_name,
   last_name,
   email,
@@ -116,7 +115,6 @@ export function startEditingUser(
   jwt
 ) {
   const user = {
-    user_id,
     first_name,
     last_name,
     email,
@@ -139,7 +137,6 @@ export function startEditingUser(
       .then((response) => response.json())
       .then((data) => {
         if (data.ok) {
-          user.user_id = user_id;
           dispatch(FinishEditingUser(user));
           dispatch(
             AddNotification({
