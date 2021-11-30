@@ -43,6 +43,7 @@ th {
 }
 
 .buttonRow {
-  position: relative;
+  margin-top: 20px;
+  position: absolute;
   /* bottom: -20px; */
 }

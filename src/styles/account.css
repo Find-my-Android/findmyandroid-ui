@@ -34,9 +34,9 @@
 .textbar {
   background-color: rgb(255, 255, 255);
   border-color: rgba(22, 46, 56, 0);
-  margin-left: 15px;
+  margin-left: 95px;
   display: inline-block;
-  width: 310px;
+  width: 345px;
   height: 35px;
   font-size: 25px;
   font-weight: bolder;
@@ -45,9 +45,9 @@
 .textbar-a {
   background-color: rgb(255, 255, 255);
   border-color: rgba(22, 46, 56, 0);
-  margin-left: 15px;
+  margin-left: 90px;
   display: inline-block;
-  width: 300px;
+  width: 345px;
   height: 35px;
   font-size: 25px;
   font-weight: bolder;
@@ -56,9 +56,9 @@
 .textbar-b {
   background-color: rgb(255, 255, 255);
   border-color: rgba(22, 46, 56, 0);
-  margin-left: 15px;
+  margin-left: 90px;
   display: inline-block;
-  width: 300px;
+  width: 345px;
   height: 35px;
   font-size: 25px;
   font-weight: bolder;
@@ -67,9 +67,9 @@
 .textbar-c {
   background-color: rgb(255, 255, 255);
   border-color: rgba(22, 46, 56, 0);
-  margin-left: 15px;
+  margin-left: 44px;
   display: inline-block;
-  width: 255px;
+  width: 345px;
   height: 35px;
   font-size: 25px;
   font-weight: bolder;
@@ -80,7 +80,7 @@
   border-color: rgba(22, 46, 56, 0);
   margin-left: 15px;
   display: inline-block;
-  width: 228px;
+  width: 345px;
   height: 35px;
   font-size: 25px;
   font-weight: bolder;
@@ -89,12 +89,34 @@
 .textbar-e {
   background-color: rgb(255, 255, 255);
   border-color: rgba(22, 46, 56, 0);
-  margin-left: 15px;
+  margin-left: 133px;
   display: inline-block;
   width: 345px;
   height: 35px;
   font-size: 25px;
   font-weight: bolder;
+}
+
+.textbar-f {
+  background-color: rgb(255, 255, 255);
+  border-color: rgba(22, 46, 56, 0);
+  margin-left: 62px;
+  display: inline-block;
+  width: 345px;
+  height: 35px;
+  font-size: 25px;
+  font-weight: bold
+}
+
+.textbar-g {
+  background-color: rgb(255, 255, 255);
+  border-color: rgba(22, 46, 56, 0);
+  margin-left: 25px;
+  display: inline-block;
+  width: 345px;
+  height: 35px;
+  font-size: 25px;
+  font-weight: bold
 }
 
 .form {

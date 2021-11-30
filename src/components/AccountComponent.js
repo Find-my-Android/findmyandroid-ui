@@ -98,7 +98,7 @@ function AccountComponent() {
             <Form.Group controlId="changeEmail2">
               <Form.Label className="inline">Confirm Email : </Form.Label>
               <Form.Control
-                className="textbar-e"
+                className="textbar-f"
                 required
                 type="email"
                 value={email2}
@@ -144,7 +144,7 @@ function AccountComponent() {
             <Form.Group controlId="changePassword">
               <Form.Label className="inline">Confirm Password : </Form.Label>
               <Form.Control
-                className="textbar"
+                className="textbar-g"
                 required
                 type="password"
                 value={password2}

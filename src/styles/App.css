@@ -1,5 +1,6 @@
 html {
   background-color: #162e38ff;
+  min-width: 1500px;
 }
 
 .App {
@@ -10,6 +11,7 @@ html {
   background-image: url("../images/map.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  min-width: 800px;
 }
 
 .logoText {
