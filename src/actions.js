@@ -4,6 +4,7 @@ export const Action = Object.freeze({
   FinishAddingUser: "FinishAddingUser",
   FinishSettingUser: "FinishSettingUser",
   FinishEditingUser: "FinishEditingUser",
+  FinishDeletingUserAdmin: "FinishDeletingUserAdmin",
   FinishLoggingOutUser: "FinishLoggingOutUser",
 
   /* Notifications */
@@ -425,9 +426,54 @@ export function FinishEditingUserAdmin(user) {
   };
 }
 
+export function startDeletingUserAdmin(user_id, jwt) {
+  const user = { user_id: user_id };
+  const options = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  };
+
+  return (dispatch) => {
+    fetch(`${host}/admin/user/delete`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(FinishDeletingUserAdmin(user));
+          dispatch(
+            AddNotification({
+              type: "success",
+              message: "User Deleted Successfully!",
+            })
+          );
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          AddNotification({
+            type: "danger",
+            message: "User failed to be deleted",
+          })
+        );
+      });
+  };
+}
+
+export function FinishDeletingUserAdmin(user) {
+  return {
+    type: Action.FinishDeletingUserAdmin,
+    payload: user,
+  };
+}
+
 /********************************* Forgot Password *********************************/
 export function startSendingEmail(email, history) {
-  const user = { email: email };
+  const user = { email };
   const options = {
     method: "POST",
     headers: {

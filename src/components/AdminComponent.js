@@ -4,6 +4,7 @@ import {
   startGettingUsers,
   startGettingAllUserPhones,
   startEditingUserAdmin,
+  startDeletingUserAdmin,
 } from "../actions";
 import BootstrapTable from "react-bootstrap-table-next";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
@@ -12,6 +13,7 @@ import Button from "react-bootstrap/Button";
 import Notification from "./Notification";
 import UserModal from "./UserModal";
 import ErrorModal from "./ErrorModal";
+import ConfirmModal from "./ConfirmModal";
 import PhoneTableModal from "./PhoneTableModal";
 
 function AdminComponent(props) {
@@ -21,8 +23,10 @@ function AdminComponent(props) {
   const jwt = useSelector((state) => state.jwt);
   const user = useSelector((state) => state.user);
   const [errorMessage, setErrorMessage] = useState("");
+  const [deleteUserMessage, setDeleteUserMessage] = useState("");
   const [displayErrorOpen, setDisplayErrorOpen] = useState(false);
   const [editUserOpen, setEditUserOpen] = useState(false);
+  const [deleteUserOpen, setDeleteUserOpen] = useState(false);
   const [displayPhonesOpen, setDisplayPhonesOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState({
     user_id: -1,
@@ -69,6 +73,35 @@ function AdminComponent(props) {
   useEffect(() => {
     dispatch(startGettingUsers(jwt));
   }, [dispatch, selectedUser.user_id, jwt]);
+
+  const handleDeleteUserClick = () => {
+    if (selectedUser.user_id !== -1) {
+      setDeleteUserMessage("Are use sure you want to delete this user?");
+      setDeleteUserOpen(true);
+    } else {
+      setErrorMessage("Please select a user to delete.");
+      setDeleteUserOpen(true);
+    }
+  };
+
+  const handleDeleteUserClose = () => {
+    setDeleteUserOpen(false);
+  };
+
+  const handleDeleteUser = () => {
+    dispatch(startDeletingUserAdmin(selectedUser.user_id, jwt));
+    setSelectedUser({
+      user_id: -1,
+      first_name: "",
+      last_name: "",
+      primary_num: "",
+      secondary_num: "",
+      email: "",
+      account_type: -1,
+      last_used: "",
+    });
+    setDeleteUserOpen(false);
+  };
 
   const handleDisplayErrorClose = () => {
     setDisplayErrorOpen(false);
@@ -182,6 +215,14 @@ function AdminComponent(props) {
             }
           />
 
+          <ConfirmModal
+            open={deleteUserOpen}
+            onClose={handleDeleteUserClose}
+            onSubmit={handleDeleteUser}
+            title={"Confirm User Deletion"}
+            message={deleteUserMessage}
+          />
+
           <div className="buttonRow">
             <span className="mr-2">
               <Button
@@ -202,7 +243,11 @@ function AdminComponent(props) {
               </Button>
             </span>
             <span>
-              <Button type="button" className="btn btn-danger">
+              <Button
+                type="button"
+                className="btn btn-danger"
+                onClick={handleDeleteUserClick}
+              >
                 Delete User
               </Button>
             </span>

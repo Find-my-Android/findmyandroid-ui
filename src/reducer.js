@@ -84,6 +84,13 @@ function reducer(state = initialState, action) {
             ? action.payload.account_type === 1
             : state.admin,
       };
+    case Action.FinishDeletingUserAdmin:
+      return {
+        ...state,
+        users: state.users.filter(
+          (user) => user.user_id !== action.payload.user_id
+        ),
+      };
     /**** Notifications ****/
     case Action.AddNotification:
       return {
