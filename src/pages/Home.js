@@ -61,6 +61,12 @@ function Home({ history }) {
                 <span className="link">Sign up here!</span>
               </Link>
             </p>
+            <p className="inline">
+            Don't have an Android App?
+            <Link to="">
+              <span className="link">Download here!</span>
+            </Link>
+          </p>
             <div className="c">
               <Button type="submit">Login</Button>
             </div>

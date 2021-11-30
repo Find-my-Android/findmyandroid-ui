@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import Form from "react-bootstrap/Form";
+import { Button } from "react-bootstrap";
 
 import { startEditingUser, AddNotification } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,6 +35,7 @@ function Account({ history }) {
     );
   };
 
+
   useEffect(() => {
     if (!authenticated) {
       history.push("/");
@@ -44,91 +46,85 @@ function Account({ history }) {
     <>
       <SideBar history={history} active="account" />
       <div className="admin">
-        <div className="a1">
-          {user.first_name} {user.last_name}
-          <div className="a2">
-            <Form onChange={onChange} className="inline">
+        <div className="a2">
+            <Form onSubmit={onChange} className="inline">
               <Form.Group controlId="changeFirstName">
                 <Form.Label className="inline">First name : </Form.Label>
                 <Form.Control
-                  className="textbar"
+                  className="textbar-a"
                   required
                   type="text"
-                  value={user.first_name}
+                  value={user_firstname}
+                  placeholder={user.first_name}
                   onChange={(e) => changeFirstName(e.target.value)}
                 />
               </Form.Group>
-              <onClick type="submit" className="change">
-                Change First name
-              </onClick>
+
               <Form.Group controlId="changeLastName">
                 <Form.Label className="inline">Last name : </Form.Label>
                 <Form.Control
-                  className="textbar"
+                  className="textbar-b"
                   required
                   type="text"
-                  value={user.last_name}
+                  value={user_lastname}
+                  placeholder={user.last_name}
                   onChange={(e) => changeLastName(e.target.value)}
                 />
               </Form.Group>
-              <onClick type="submit" className="change">
-                Change Last name
-              </onClick>
+
               <Form.Group controlId="changeprimary">
                 <Form.Label className="inline">Primary number : </Form.Label>
                 <Form.Control
-                  className="textbar"
+                  className="textbar-c"
                   required
                   type="text"
-                  value={user.primary_num}
+                  value={primary}
+                  placeholder={user.primary_num}
                   onChange={(e) => changeprimary(e.target.value)}
                 />
               </Form.Group>
-              <onClick type="submit" className="change">
-                Change Primary number
-              </onClick>
+
               <Form.Group controlId="changesecondary">
                 <Form.Label className="inline">Secondary number : </Form.Label>
                 <Form.Control
-                  className="textbar"
                   required
+                  className="textbar-d"
                   type="text"
-                  value={user.secondary_num}
+                  value={secondary}
+                  placeholder={user.secondary_num}
                   onChange={(e) => changesecondary(e.target.value)}
                 />
               </Form.Group>
-              <onClick type="submit" className="change">
-                Change Secondary number
-              </onClick>
+
               <Form.Group controlId="changeEmail">
                 <Form.Label className="inline">Email : </Form.Label>
                 <Form.Control
-                  className="textbar"
+                  className="textbar-e"
                   required
                   type="email"
-                  value={user.email}
+                  value={email}
+                  placeholder={user.email}
                   onChaneg={(e) => changeEmail(e.target.value)}
                 />
               </Form.Group>
-              <onClick type="submit" className="change">
-                Change Email
-              </onClick>
+
               <Form.Group controlId="changePassword">
                 <Form.Label className="inline">Password : </Form.Label>
                 <Form.Control
                   className="textbar"
                   required
                   type="password"
-                  value="*************" // {password}
+                  value={password}
+                  placeholder={password}
                   onChange={(e) => changePassword(e.target.value)}
                 />
               </Form.Group>
-              <onClick type="submit" className="change">
-                Change Password
-              </onClick>
+              <div>
+                <Button type="submit">Edit information</Button>
+              </div>
+
             </Form>
           </div>
-        </div>
       </div>
     </>
   );
