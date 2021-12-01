@@ -5,6 +5,7 @@ html {
 
 .App {
   height: 100vh;
+  min-height: 700px;
   width: 100vw;
   display: flex;
   flex-direction: row;
