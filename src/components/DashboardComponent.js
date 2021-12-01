@@ -41,7 +41,9 @@ function DashboardComponent(props) {
     <div className="admin">
       <div className="container">
         <Notification></Notification>
-        {phones ? createPhones() : <></>}
+        <div className="scroll">
+         {phones ? createPhones() : <></>}
+        </div>
       </div>
     </div>
   );
