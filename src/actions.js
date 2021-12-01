@@ -12,6 +12,8 @@ export const Action = Object.freeze({
 
   /* Phones */
   FinishLoadingPhones: "FinishLoadingPhones",
+  FinishEditingPhone: "FinishEditingPhone",
+  FinishDeletingPhone: "FinishDeletingPhone",
 
   /* Admin */
   FinishLoadingUsers: "FinishLoadingUsers",
@@ -271,6 +273,117 @@ export function startGettingPhones(jwt) {
       .catch((e) => {
         console.error(e);
       });
+  };
+}
+
+export function startEditingPhone(
+  software_id,
+  name,
+  phone_num,
+  latitude,
+  longitude,
+  tracking_state,
+  last_tracked,
+  stolen_state,
+  sim_removed,
+  jwt
+) {
+  const phone = {
+    software_id,
+    name,
+    phone_num,
+    latitude,
+    longitude,
+    tracking_state,
+    last_tracked,
+    stolen_state,
+    sim_removed,
+  };
+  const options = {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(phone),
+  };
+
+  return (dispatch) => {
+    fetch(`${host}/phone/edit`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(FinishEditingPhone(phone));
+          dispatch(
+            AddNotification({
+              type: "success",
+              message: "Phone information successfully updated!",
+            })
+          );
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          AddNotification({
+            type: "danger",
+            message: "Phone information failed to be edited!",
+          })
+        );
+      });
+  };
+}
+
+export function FinishEditingPhone(phone) {
+  return {
+    type: Action.FinishEditingPhone,
+    payload: phone,
+  };
+}
+
+export function startDeletingPhone(software_id, jwt) {
+  const phone = { software_id };
+  const options = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(phone),
+  };
+
+  return (dispatch) => {
+    fetch(`${host}/phone/delete`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(FinishDeletingPhone(phone));
+          dispatch(
+            AddNotification({
+              type: "success",
+              message: "Phone Deleted Successfully!",
+            })
+          );
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          AddNotification({
+            type: "danger",
+            message: "Phone failed to be deleted",
+          })
+        );
+      });
+  };
+}
+
+export function FinishDeletingPhone(phone) {
+  return {
+    type: Action.FinishDeletingPhone,
+    payload: phone,
   };
 }
 

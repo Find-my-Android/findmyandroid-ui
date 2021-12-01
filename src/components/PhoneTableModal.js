@@ -82,11 +82,6 @@ function PhoneTableModal(props) {
     props.onClose();
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.onSubmit();
-  };
-
   const handleLocatePhoneClick = () => {
     if (selectedPhone.software_id !== "") {
       props.history.push(

@@ -61,6 +61,22 @@ function reducer(state = initialState, action) {
     case Action.FinishEditingPhone:
       return {
         ...state,
+        phones: state.phones.map((phone) =>
+          phone.software_id === action.payload.software_id
+            ? action.payload
+            : phone
+        ),
+      };
+    case Action.FinishDeletingPhone:
+      return {
+        ...state,
+        phones: state.phones.filter(
+          (phone) => phone.software_id !== action.payload.software_id
+        ),
+      };
+    case Action.FinishEditingPhone:
+      return {
+        ...state,
         phone: action.payload,
       };
     /**** Admin ****/

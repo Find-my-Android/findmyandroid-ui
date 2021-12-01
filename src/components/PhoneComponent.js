@@ -11,7 +11,7 @@ function PhoneComponent(props) {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    props.handleDelete(phone.phone_id);
+    props.handleDelete(phone);
   };
 
   const handleEdit = (e) => {
@@ -20,7 +20,8 @@ function PhoneComponent(props) {
   };
 
   const handleMap = (e) => {
-    props.history.push(`map/${phone.latitude}/${phone.longitude}`);
+    e.preventDefault();
+    props.handleMap(phone);
   };
 
   return (
@@ -35,7 +36,7 @@ function PhoneComponent(props) {
           />
         </div>
         <div className="phonenum">
-          {phone.phone_num}{" "}
+          {phone.phone_num}
           <FontAwesomeIcon
             icon={faTrashAlt}
             className="icon"
@@ -45,7 +46,7 @@ function PhoneComponent(props) {
         <div className="position">
           Latitude: {phone.latitude} &nbsp;&nbsp;&nbsp;&nbsp; Longitude：
           {phone.longitude}&nbsp;&nbsp;&nbsp;&nbsp;
-          {phone.tracking_state ? "Tracking" : "Not Tracking"}{" "}
+          {phone.tracking_state ? "Tracking" : "Not Tracking"}
           &nbsp;&nbsp;&nbsp;&nbsp;
           {phone.status}&nbsp;&nbsp;&nbsp;&nbsp;
           <FontAwesomeIcon icon={faMap} className="icon" onClick={handleMap} />

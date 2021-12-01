@@ -34,22 +34,26 @@ function ConfirmModal(props) {
       <Modal.Body>
         <h4>{props.message}</h4>
         <div>
-          <Button
-            className="float-right"
-            type="submit"
-            variant="danger"
-            onClick={handleClose}
-          >
-            Close
-          </Button>
-          <Button
-            className="float-right"
-            type="submit"
-            variant="primary"
-            onClick={handleSubmit}
-          >
-            Submit
-          </Button>
+          <span className="float-right">
+            <Button
+              className="btn btn-info"
+              type="button"
+              variant="danger"
+              onClick={handleClose}
+            >
+              Close
+            </Button>
+          </span>
+          <span className="float-right mr-2">
+            <Button
+              className="btn btn-info"
+              type="button"
+              variant="info"
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
+          </span>
         </div>
       </Modal.Body>
     </Modal>
