@@ -80,7 +80,7 @@ function AdminComponent(props) {
       setDeleteUserOpen(true);
     } else {
       setErrorMessage("Please select a user to delete.");
-      setDeleteUserOpen(true);
+      setDisplayErrorOpen(true);
     }
   };
 
@@ -213,6 +213,7 @@ function AdminComponent(props) {
               selectedUser.last_name +
               "'s Phones"
             }
+            history={props.history}
           />
 
           <ConfirmModal

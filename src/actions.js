@@ -4,7 +4,6 @@ export const Action = Object.freeze({
   FinishAddingUser: "FinishAddingUser",
   FinishSettingUser: "FinishSettingUser",
   FinishEditingUser: "FinishEditingUser",
-  FinishDeletingUserAdmin: "FinishDeletingUserAdmin",
   FinishLoggingOutUser: "FinishLoggingOutUser",
 
   /* Notifications */
@@ -17,6 +16,9 @@ export const Action = Object.freeze({
   /* Admin */
   FinishLoadingUsers: "FinishLoadingUsers",
   FinishEditingUserAdmin: "FinishEditingUserAdmin",
+  FinishEditingPhoneAdmin: "FinishEditingPhoneAdmin",
+  FinishDeletingUserAdmin: "FinishDeletingUserAdmin",
+  FinishDeletingPhoneAdmin: "FinishDeletingPhoneAdmin",
 });
 
 export const host = "https://fmya.duckdns.org:8445";
@@ -427,7 +429,7 @@ export function FinishEditingUserAdmin(user) {
 }
 
 export function startDeletingUserAdmin(user_id, jwt) {
-  const user = { user_id: user_id };
+  const user = { user_id };
   const options = {
     method: "DELETE",
     headers: {
@@ -468,6 +470,117 @@ export function FinishDeletingUserAdmin(user) {
   return {
     type: Action.FinishDeletingUserAdmin,
     payload: user,
+  };
+}
+
+export function startEditingPhoneAdmin(
+  software_id,
+  name,
+  phone_num,
+  latitude,
+  longitude,
+  tracking_state,
+  last_tracked,
+  stolen_state,
+  sim_removed,
+  jwt
+) {
+  const phone = {
+    software_id,
+    name,
+    phone_num,
+    latitude,
+    longitude,
+    tracking_state,
+    last_tracked,
+    stolen_state,
+    sim_removed,
+  };
+  const options = {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(phone),
+  };
+
+  return (dispatch) => {
+    fetch(`${host}/admin/phone/edit`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(FinishEditingPhoneAdmin(phone));
+          dispatch(
+            AddNotification({
+              type: "success",
+              message: "Phone information successfully updated!",
+            })
+          );
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          AddNotification({
+            type: "danger",
+            message: "Phone information failed to be edited!",
+          })
+        );
+      });
+  };
+}
+
+export function FinishEditingPhoneAdmin(phone) {
+  return {
+    type: Action.FinishEditingPhoneAdmin,
+    payload: phone,
+  };
+}
+
+export function startDeletingPhoneAdmin(software_id, jwt) {
+  const phone = { software_id };
+  const options = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(phone),
+  };
+
+  return (dispatch) => {
+    fetch(`${host}/admin/phone/delete`, options)
+      .then(checkForErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.ok) {
+          dispatch(FinishDeletingPhoneAdmin(phone));
+          dispatch(
+            AddNotification({
+              type: "success",
+              message: "Phone Deleted Successfully!",
+            })
+          );
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+        dispatch(
+          AddNotification({
+            type: "danger",
+            message: "Phone failed to be deleted",
+          })
+        );
+      });
+  };
+}
+
+export function FinishDeletingPhoneAdmin(phone) {
+  return {
+    type: Action.FinishDeletingPhoneAdmin,
+    payload: phone,
   };
 }
 
