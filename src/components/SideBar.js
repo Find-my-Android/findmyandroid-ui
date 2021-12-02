@@ -17,8 +17,13 @@ function SideBar(props) {
   };
 
   const centerMap = () => {
-    return phones[0] !== undefined
-      ? phones[0].latitude + "/" + phones[0].longitude
+    let validPhones = phones.filter(
+      (phone) => phone.latitude !== -1 && phone.longitude !== -1
+    );
+    let phone = validPhones[0];
+
+    return phone !== undefined
+      ? phone.latitude + "/" + phone.longitude
       : "40/-100";
   };
 

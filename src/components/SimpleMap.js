@@ -16,18 +16,18 @@ function SimpleMap(props) {
   };
 
   useEffect(() => {
-    if (admin) {
-      dispatch(startGettingAllPhones(jwt));
-    } else {
-      dispatch(startGettingPhones(jwt));
-    }
-    const interval = setInterval(() => {
+    const fetchData = async () => {
       if (admin) {
         dispatch(startGettingAllPhones(jwt));
       } else {
         dispatch(startGettingPhones(jwt));
       }
+    };
+
+    const interval = setInterval(() => {
+      fetchData();
     }, 5000);
+    fetchData();
     return () => clearInterval(interval);
   }, [dispatch, jwt]);
 
