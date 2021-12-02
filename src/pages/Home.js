@@ -62,11 +62,11 @@ function Home({ history }) {
               </Link>
             </p>
             <p className="inline">
-            Don't have an Android App?
-            <Link to="">
-              <span className="link">Download here!</span>
-            </Link>
-          </p>
+              Don't have an Android App?
+              <a href="/files/fmya.apk">
+                <span className="link">Download here!</span>
+              </a>
+            </p>
             <div className="c">
               <Button type="submit">Login</Button>
             </div>

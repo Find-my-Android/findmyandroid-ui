@@ -83,7 +83,12 @@ function PhoneTableModal(props) {
   };
 
   const handleLocatePhoneClick = () => {
-    if (selectedPhone.software_id !== "") {
+    if (selectedPhone.latitude === -1 && selectedPhone.longitude === -1) {
+      setErrorMessage(
+        "This phone has not been tracked yet. Please enable tracking on the website or enable location services on your device."
+      );
+      setDisplayErrorOpen(true);
+    } else if (selectedPhone.software_id !== "") {
       props.history.push(
         `map/${selectedPhone.latitude}/${selectedPhone.longitude}`
       );

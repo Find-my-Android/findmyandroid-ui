@@ -21,6 +21,14 @@ function SimpleMap(props) {
     } else {
       dispatch(startGettingPhones(jwt));
     }
+    const interval = setInterval(() => {
+      if (admin) {
+        dispatch(startGettingAllPhones(jwt));
+      } else {
+        dispatch(startGettingPhones(jwt));
+      }
+    }, 5000);
+    return () => clearInterval(interval);
   }, [dispatch, jwt]);
 
   const createPins = () => {

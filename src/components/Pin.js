@@ -8,27 +8,29 @@ function Pin(props) {
 
   const getPath = () => {
     let imageDir = "/images/";
+    if (sim_removed) {
+      return imageDir + "removed.png";
+    }
+    if (stolen_state) {
+      return imageDir + "stolen.png";
+    }
     if (tracking_state) {
-      if (stolen_state) {
-        if (sim_removed) {
-          return imageDir + "removed.png";
-        } else {
-          return imageDir + "stolen.png";
-        }
-      } else {
-        return imageDir + "passive.png";
-      }
+      return imageDir + "passive.png";
     }
     return imageDir + "not.png";
   };
 
   return (
-    <div className="pin">
-      <div>
-        <img alt={props.name} src={getPath()} />
-        <span>{props.name}</span>
-      </div>
-    </div>
+    <>
+      {props.lat !== -1 && props.lng !== -1 && (
+        <div className="pin">
+          <div>
+            <img alt={props.name} src={getPath()} />
+            <span>{props.name}</span>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

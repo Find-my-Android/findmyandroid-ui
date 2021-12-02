@@ -43,7 +43,12 @@ function DashboardComponent(props) {
 
   const handleLocatePhoneClick = (phone) => {
     setSelectedPhone(phone);
-    if (phone.software_id !== "") {
+    if (phone.latitude === -1 && phone.longitude === -1) {
+      setErrorMessage(
+        "This phone has not been tracked yet. Please enable tracking on the website or enable location services on your device."
+      );
+      setDisplayErrorOpen(true);
+    } else if (phone.software_id !== "") {
       props.history.push(`map/${phone.latitude}/${phone.longitude}`);
     } else {
       setErrorMessage("Please select a phone to locate.");
@@ -181,7 +186,22 @@ function DashboardComponent(props) {
       <div className="admin">
         <div className="container">
           <Notification></Notification>
-          <div className="scroll">{phones ? createPhones() : <></>}</div>
+          <div className="scroll">
+            {phones.length > 0 ? (
+              createPhones()
+            ) : (
+              <>
+                <h1>No phones found!</h1>
+                <h3>
+                  To add a phone, download the android app and login to your
+                  account.
+                  <a href="/files/fmya.apk">
+                    <span className="link">Download here!</span>
+                  </a>
+                </h3>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>
